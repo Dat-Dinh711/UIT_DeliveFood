@@ -1,0 +1,463 @@
+:root {
+  --primary-color: #8ABF44;
+  --primary-color-hover: #668a36;
+  --text-color: #828282;
+  --white-color: #fff;
+  --black-color: #000;
+  --product-name-color: #6A8491;
+  --product-border: #E9E9E9;
+  --header-height: 157px;
+  --search-height: 100px;
+  --navbar-height: 50px;
+  --banner-height: 564px;
+  --footer-height: 260px;
+  --product-width: 250px;
+  --product-height: 325px; }
+
+/* Container */
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: #fafafa; }
+
+.container__banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+  width: 100%; }
+
+.container__banner-title {
+  display: block;
+  font-size: 10rem;
+  font-weight: 700;
+  color: var(--white-color);
+  margin-bottom: 60px;
+  animation: text 3s 1; }
+
+.container__banner-desc {
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--white-color);
+  line-height: 4rem;
+  animation: text2 6s 1; }
+
+.container__banner {
+  width: 100%;
+  height: var(--banner-height);
+  position: relative;
+  overflow: hidden; }
+
+.container__banner-wrap {
+  width: 400%;
+  height: var(--banner-height);
+  display: flex;
+  /* animation: slideshow 16s infinite; */ }
+
+.container__banner-wrap input {
+  display: none; }
+
+.slide {
+  transition: 2s; }
+
+.container__banner-img {
+  width: 100%;
+  /* transition: 2s; */ }
+
+.navigation-manual {
+  position: absolute;
+  width: 100%;
+  margin-top: -40px;
+  display: flex;
+  justify-content: center; }
+
+.manual-btn {
+  border: 2px solid var(--primary-color);
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 1s; }
+
+.manual-btn:not(last-child) {
+  margin-right: 40px; }
+
+.manual-btn:hover {
+  background-color: var(--primary-color); }
+
+#radio1:checked ~ .first {
+  margin-left: 0; }
+
+#radio2:checked ~ .first {
+  margin-left: -35%; }
+
+#radio3:checked ~ .first {
+  margin-left: -68%; }
+
+#radio4:checked ~ .first {
+  margin-left: -100%; }
+
+.navigation-auto {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 524px; }
+
+.navigation-auto div {
+  border: 2px solid var(--primary-color);
+  padding: 5px;
+  border-radius: 10px;
+  transition: 1s; }
+
+.navigation-auto div:not(last-child) {
+  margin-right: 40px; }
+
+#radio1:checked ~ .navigation-auto .auto-btn1 {
+  background-color: var(--primary-color); }
+
+#radio2:checked ~ .navigation-auto .auto-btn2 {
+  background-color: var(--primary-color); }
+
+#radio3:checked ~ .navigation-auto .auto-btn3 {
+  background-color: var(--primary-color); }
+
+#radio4:checked ~ .navigation-auto .auto-btn4 {
+  background-color: var(--primary-color); }
+
+/* Container */
+.container-content {
+  margin: 75px 0; }
+
+/* Container Featured */
+.container__products-title {
+  font-size: 4rem;
+  color: var(--primary-color); }
+
+.container__featured-products {
+  margin-top: 20px; }
+
+.container__featured-banner {
+  display: flex;
+  width: 100%;
+  height: 220px;
+  border: 1px solid var(--product-border);
+  background-color: var(--white-color);
+  justify-content: center;
+  align-items: center; }
+
+.container__featured-banner-img:first-child {
+  margin-right: 20px; }
+
+/* Container Vegetables */
+.container__vegetables {
+  margin-top: 75px; }
+
+.container__vegetables-products {
+  display: flex;
+  margin-top: 20px; }
+
+.container__vegetables-products-item:hover {
+  border: 1px solid var(--primary-color); }
+
+.container__vegetables-banner img {
+  width: 100%;
+  height: calc(2*var(--product-height)); }
+
+.container__vegetables-products-item {
+  position: relative;
+  width: 100%;
+  height: calc(2*var(--product-height));
+  border: 1px solid var(--product-border);
+  background-color: var(--white-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* margin-left: 5px; */ }
+
+.container__vegetables-products-img {
+  width: 390px;
+  height: 380px; }
+
+.container__vegetables-products-rating {
+  display: flex;
+  width: 82%;
+  justify-content: flex-start;
+  margin: 30px 0;
+  color: #ffcc00; }
+
+.container__vegetables-products-rating i {
+  font-size: 1.4rem;
+  padding-right: 2px; }
+
+.container__vegetable-products-info {
+  text-align: left;
+  width: 390px; }
+
+.container__vegetables-products-name {
+  /* padding-right: 220px; */
+  margin-bottom: 30px;
+  font-size: 2.7rem;
+  line-height: 3rem;
+  color: var(--product-name-color);
+  font-weight: 500;
+  text-decoration: none;
+  text-align: left;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1; }
+
+.container__vegetables-products-name:hover {
+  color: var(--primary-color); }
+
+.container__vegetables-products-desc {
+  width: 390px;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: var(--text-color);
+  margin-bottom: 30px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; }
+
+.container__vegetables-products-price {
+  font-size: 2.1rem;
+  color: var(--primary-color);
+  font-weight: 500; }
+
+.container__vegetables-products-new {
+  position: absolute;
+  top: 45px;
+  right: 55px;
+  width: 50px;
+  height: 25px;
+  border-radius: 50px;
+  background-color: #F88B56;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.container__vegetables-products-new span {
+  color: var(--white-color);
+  font-size: 1.2rem;
+  font-weight: 700; }
+
+.container__vegetables-products-sale {
+  position: absolute;
+  top: 45px;
+  left: 55px;
+  width: 70px;
+  height: 25px;
+  border-radius: 50px;
+  background-color: #5BC0DE;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none; }
+
+.container__vegetables-products-sale span {
+  color: var(--white-color);
+  font-size: 1.2rem;
+  font-weight: 700; }
+
+.container__vegetables-products-onsale .container__vegetables-products-sale {
+  display: flex; }
+
+.container__vegetables-products-cart {
+  position: absolute;
+  top: 385px;
+  right: 45px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #FEC0C0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer; }
+
+.container__vegetables-products-cart i {
+  font-size: 1.8rem; }
+
+/* Container Meat */
+.container__meat {
+  margin-top: 75px; }
+
+.container__meat-products {
+  margin-top: 20px; }
+
+.container__meat-banner {
+  width: 100%; }
+
+.container__meat-banner img {
+  width: 100%;
+  height: 100%; }
+
+.container__meat-products {
+  display: flex; }
+
+.container__meat-best-seller {
+  width: var(--product-width);
+  max-height: 866px;
+  border: 1px solid var(--product-border);
+  background-color: var(--white-color); }
+
+.container__meat-best-seller-content {
+  margin: 60px 20px; }
+
+.container__meat-best-seller-title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 30px; }
+
+.container__meat-best-seller-item {
+  width: 100%;
+  display: flex;
+  padding: 20px 0;
+  border-bottom: 2px solid var(--product-border); }
+
+.container__meat-best-seller-item:first-child {
+  padding-top: 0; }
+
+.container__meat-best-seller-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0; }
+
+.container__meat-best-seller-img {
+  width: 78px;
+  height: 78px; }
+
+.container__meat-best-seller-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 15px; }
+
+.container__meat-best-seller-name {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 10px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1; }
+
+.container__meat-best-seller-price {
+  font-size: 1.5rem;
+  color: var(--primary-color); }
+
+/* Container Fruit */
+.container__fruit {
+  margin-top: 75px; }
+
+.container__fruit-products {
+  display: flex;
+  margin-top: 20px; }
+
+/* Container Recipe */
+.container__recipe {
+  /* margin-top: 75px; */
+  padding: 75px 20px 0 20px;
+  overflow: hidden;
+  position: relative; }
+
+.container__recipe-wrap {
+  width: 100%; }
+
+.container__recipe-products {
+  margin-top: 20px;
+  position: relative;
+  /*  */
+  display: flex;
+  width: 500%;
+  transition: transform 0.5s linear; }
+
+.container__recipe-item {
+  /* width: 95%; */
+  height: 487px;
+  border: 1px solid var(--product-border);
+  background-color: var(--white-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*  */
+  width: 380px;
+  margin-right: 20px; }
+
+.container__recipe-item:hover {
+  border: 1px solid var(--primary-color); }
+
+.container__recipe-item-link {
+  text-decoration: none;
+  color: var(--text-color); }
+
+.container__recipe-img {
+  width: 320px;
+  height: 280px; }
+
+.container__recipe-info {
+  text-align: left;
+  margin-top: 25px;
+  width: 320px; }
+
+.container__recipe-title {
+  text-decoration: none;
+  font-size: 2.3rem;
+  line-height: 2.5rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1; }
+
+.container__recipe-desc {
+  width: 320px;
+  margin-top: 15px;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; }
+
+.container__recipe-arrow-left {
+  position: absolute;
+  top: 50%;
+  left: 32px;
+  width: 60px;
+  height: 60px;
+  background-color: #fefefe;
+  border: 1px solid var(--product-border);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer; }
+
+.container__recipe-arrow-left i,
+.container__recipe-arrow-right i {
+  font-size: 2.5rem;
+  color: var(--text-color); }
+
+.container__recipe-arrow-right {
+  position: absolute;
+  top: 50%;
+  right: 1%;
+  width: 60px;
+  height: 60px;
+  background-color: #fefefe;
+  border: 1px solid var(--product-border);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer; }

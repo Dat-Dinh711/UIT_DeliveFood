@@ -1,0 +1,41 @@
+<div class="order">
+    <div class="header-search__btn order__search">
+        <input type="text" placeholder="Tìm kiếm đơn hàng ..." class="header-search__btn-input">
+        <i class="fas fa-search header-search__btn-icon"></i>
+    </div>
+
+    <div class="order__product">
+        <div class="order__product-title">
+            <div>Mã đơn hàng</div>
+            <div>Điểm lấy hàng</div>
+            <div>Giao hàng đến</div>
+            <div>Giá trị đơn hàng</div>
+            <div>Trạng thái đơn hàng</div>
+        </div>
+
+        <div class="order__list">
+            {{#if orders}}
+            {{#each orders}}
+            <a href="/shipper/order-received/{{this._id}}" class="order__item-link">
+                <ul class="order__item">
+                <li>{{this.orderID}}</li>
+                <li>{{this.shopAddress}}</li>
+                <li>{{this.address}}</li>
+                <li>{{discount this.totalPrice 0}}</li>
+                {{#switch this.status}}
+                    {{#case 'delivering'}}<li>Đang giao</li>{{/case}}
+                    {{#case 'success-delivery'}}<li>Giao hàng thành công</li>{{/case}}
+                    {{#case 'success'}}<li>Hoàn thành</li>{{/case}}
+                    {{#case 'cancel'}}<li>Đã hủy</li>{{/case}}
+                {{/switch}}
+            </ul>
+            </a>
+            {{/each}}
+            {{else}}
+            <ul style="list-style: none; font-size: 1.6rem">
+                <li>Bạn chưa nhận đơn hàng nào</li>
+            </ul>
+            {{/if}}
+        </div>
+    </div>
+</div>

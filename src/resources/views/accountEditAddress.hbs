@@ -1,0 +1,36 @@
+<div class="account__content">
+    <form action="?type=edit" method="POST" class="account__content-warpp" id="edit-address-form">
+        <div class="account__content-title">Địa chỉ</div>
+
+        <div class="account__content-add-address">
+            <div class="account__content-info-title">
+                <ul class="account__content-info-title-list">
+                    <li class="account__content-info-title-item">Tên người nhận</li>
+                    <li class="account__content-info-title-item">SĐT người nhận</li>
+                    <li class="account__content-info-title-item">Địa chỉ nhận hàng</li>
+                </ul>
+            </div>
+
+            <div class="account__content-add-address-content">
+                <div class="account__content-add-address-detail auth-form__group">
+                    <input type="text" name="name" class="auth-form__input" id="name" value="{{address.name}}">
+                    <div class="form-message"></div>
+                </div>
+
+                <div class="account__content-add-address-detail auth-form__group">
+                    <input type="text" name="phone" class="auth-form__input" id="phone" value="{{address.phone}}">
+                    <div class="form-message"></div>
+                </div>
+
+                <div class="account__content-add-address-detail js-province auth-form__group">
+                    <input type="text" name="address" class="auth-form__input" id="address" value="{{address.address}}">
+                    <div class="form-message"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="account__content-control ">
+            <button class="btn btn--primary account__content-control-btn ">Cập nhật</button>
+        </div>
+    </form>
+</div>

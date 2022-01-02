@@ -1,0 +1,61 @@
+<div class="order-all__item-has">
+    {{#if orders}}
+    <div class="order-all__item-multi">
+        {{#each orders}}
+        <div class="order-all__item order-all__status-{{this.status}}">
+            <div class="order-all__item-content">
+                <div class="order-all__info">
+                    <div class="order-all__info-shop">
+                        <a href="" class="order-all__info-shop-name">{{this.shopName}}</a>
+                        <a href="" style="text-decoration:none">
+                            <div class="order-all__info-shop-contact">
+                                <i class="fas fa-comments order-all__info-shop-contact-chat-icon"></i>
+                                <span class="order-all__info-shop-contact-chat-tittle">Chat Ngay</span>
+                            </div>
+                        </a>
+                        <a href="" style="text-decoration:none">
+                            <div class="order-all__info-shop-contact">
+                                <i class="fas fa-store order-all__info-shop-contact-visit-icon"></i>
+                                <span class="order-all__info-shop-contact-visit-tittle">Xem Shop</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="order-all__status">
+                        <span class="order-all__status-content order-all__status-success-content">Giao hàng thành công</span>
+                        <span class="order-all__status-content order-all__status-confirm-content">Đang chờ xác nhận</span>
+                        <span class="order-all__status-content order-all__status-shipper-content">Đang chờ tài xế</span>
+                        <span class="order-all__status-content order-all__status-delivering-content">Đang giao</span>
+                        <span class="order-all__status-content order-all__status-cancel-content">Đã hủy</span>
+                    </div>
+                </div>
+                {{#orderAllView cart=this.cart}}{{/orderAllView}}
+            </div>
+
+            <div class="order-all__product-total">
+                <div></div>
+                <div>
+                    <span>Tổng tiền thanh toán:</span>
+                    <span class="order-all__product-total-price">{{discount this.totalPrice 0}}</span>
+                </div>
+            </div>
+
+            <div class="order-all__control">
+                <div></div> 
+                <div>
+                    <form action="/user/purchase/update/{{this._id}}" method="POST">
+                        <input type="text" name="status" value="cancel" style="display: none;">
+                        <button class="secondary-button order-all__control-btn order-all__control-confirm-shipper">Hủy đơn hàng</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{else}}
+    <div class="order-all__item-content-no-order">
+        <img src="/img/Cart/No_Order.png" alt="">
+        <span class="order-all__item-content-no-order-title">Chưa có đơn hàng</span>
+    </div>
+    {{/if}}
+</div>

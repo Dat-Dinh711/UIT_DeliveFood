@@ -1,0 +1,37 @@
+<div class="delivery">
+    <div class="header-search__btn order__search">
+        <input type="text" placeholder="Tìm kiếm đơn hàng ..." class="header-search__btn-input">
+        <i class="fas fa-search header-search__btn-icon"></i>
+    </div>
+
+    <div class="delivery__product">
+        <div class="delivery__product-title">
+            <div>Mã đơn hàng</div>
+            <div>Tên khách hàng</div>
+            <div>Tên tài xế</div>
+            <div>Giá trị đơn hàng</div>
+            <div>Trạng thái</div>
+        </div>
+
+        <div class="delivery__list">
+            {{#each orders}}
+            <a href="/seller/delivery-manager/{{this._id}}" class="delivery__item-link">
+                <ul class="delivery__item">
+                    <li>{{this.orderID}}</li>
+                    <li>{{this.name}}</li>
+                    <li>{{this.shipperName}}</li>
+                    <li>{{discount this.totalPrice 0}}</li>
+                    {{#switch this.status}}
+                        {{#case 'confirm'}}<li>Đang chờ xác nhận</li>{{/case}}
+                        {{#case 'shipper'}}<li>Đang chờ tài xế</li>{{/case}}
+                        {{#case 'delivering'}}<li>Đang giao</li>{{/case}}
+                        {{#case 'success-delivery'}}<li>Giao hàng thành công</li>{{/case}}
+                        {{#case 'success'}}<li>Hoàn thành</li>{{/case}}
+                        {{#case 'cancel'}}<li>Đã hủy</li>{{/case}}
+                    {{/switch}}
+                </ul>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</div>

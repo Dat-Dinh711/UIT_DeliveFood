@@ -1,0 +1,172 @@
+<div class="grid">
+    <div class="container-content">
+        <div class="container__address-delivery normal-checkout-shipping">
+            <div class="container__title">
+                <i class="fas fa-map-marker-alt container__title-icon"></i>
+                <span>Địa Chỉ Nhận Hàng</span>
+            </div>
+            {{#if lcAddress}}
+            <div class="container__address-delivery-info js-info-div">
+                <div class="info-name">{{lcAddress.name}} - {{lcAddress.phone}}</div>
+                <div class="container__address-delivery-info-address">
+                    <div class="info-address">{{lcAddress.address}}</div>
+                    <div class="edit js-change-address-btn">Thay đổi</div>
+                </div>
+            </div>
+            {{else}}
+            <div class="container__address-delivery-info js-info-div">
+                <div class="info-name">Thiết lập địa chỉ nhận hàng</div>
+                <div class="container__address-delivery-info-address">
+                    <div class="edit js-change-address-btn">Thiết lập</div>
+                </div>
+            </div>
+            {{/if}}
+
+            {{#if addresses}}
+            <form action="/user/change-address" method="POST" class="container__address-delivery-info js-change-address-div">
+                <div>
+                    {{#each addresses}}
+                    <div class="container__address-delivery-select">
+                        <input type="radio" name="addressID" value="{{this._id}}">
+                        <div>
+                            <div>{{this.name}} - {{this.phone}}</div>
+                            <div>{{this.address}}</div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="container__address-delivery-control">
+                    <button class="btn btn--primary">HOÀN THÀNH</button>
+                    <div class="btn btn--normal js-btn-back">TRỞ LẠI</div>
+                </div>
+            </form>
+            {{else}}
+            <div class="container__address-delivery-info js-change-address-div">
+                <div>
+                    <div>Bạn chưa tạo địa chỉ nhận hàng</div>
+                    <a href="/user/account/address" class="add-address-link">Tạo địa chỉ</a>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+        <div class="container__product-bill">
+            <div class="container__title">
+                <span>Sản Phẩm</span>
+            </div>
+            <div class="container__product-bill-title">
+                <div class="dongia">Đơn giá</div>
+                <div class="soluong">Số lượng</div>
+                <div class="thanhtien">Thành tiền</div>
+            </div>
+            <div class="container__product-bill-list-items">
+                {{#each lcOrder}}
+                <div class="line-block"></div>
+                <div class="container__product-bill-item">
+                    <img src="/{{this.item.image}}" class="product-img">
+                    <div class="container__product-bill-item-product-info">
+                        <span class="tensanpham">{{this.item.productName}}</span>
+                    </div>
+                    <div class="dongia">{{discount this.item.price this.item.discount}}</div>
+                    <div class="soluong">{{this.qty}}</div>
+                    <div class="thanhtien">{{discount this.price 0}}</div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="container__payment">
+            <div class="container__title">Phương Thức Thanh Toán</div>
+            <div class="container__payment-method">
+                <div class="type-item-default type-item-active payment-delivery">Thanh toán khi nhận hàng
+                    <div class="type-item-active-tick-delivery open">
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
+                <div class="type-item-default payment-cart">Thanh toán qua thẻ ngân hàng
+                    <div class="type-item-active-tick-cart">
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
+                <div class="type-item-default payment-paypal">Thanh toán qua Paypal
+                    <div class="type-item-active-tick-paypal">
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="container__payment-total">
+                <div class="container__payment-total-cart">
+                    <form method="POST" action="/checkout" id="checkout-form">
+                    <div id="charge-error" class="alert alert-danger {{#if noErrors}}hidden{{/if}}">
+                        {{errMsg}}
+                    </div>
+                        <div class="auth-form__form">
+                            <div class="auth-form__group">
+                                <input type="text" id="name" name="name" class="auth-form__input" placeholder="Tên" required>
+                                <div class="form-message"></div>
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="text" id="address" name="address" class="auth-form__input" placeholder="Địa chỉ" required>
+                                <div class="form-message"></div>
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="text" id="phone" name="phone" class="auth-form__input" placeholder="Số điện thoại" required>
+                                <div class="form-message"></div>
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="text" id="card-name" class="auth-form__input" placeholder="Tên chủ thẻ" required>
+                                <div class="form-message"></div>
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="text" id="card-number" class="auth-form__input" placeholder="Số thẻ tín dụng" required>
+                                <div class="form-message"></div>
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="text" id="card-expiry-month" class="auth-form__input" placeholder="Tháng hết hạn" required>
+                                <div class="form-message"></div>
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="text" id="card-expiry-year" class="auth-form__input" placeholder="Năm hết hạn" required>
+                                <div class="form-message"></div>
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="text" id="card-cvc" class="auth-form__input" placeholder="CVC" required>
+                                <div class="form-message"></div>
+                            </div>
+                        </div>
+                        <div class="btn-order-form">
+                            <button class="primary-button">Đặt Hàng</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="container__payment-total-delivery">
+                    <div class="container__payment-total-delivery-title">
+                        <div class="tong tongtienhang">Tổng tiền hàng:</div>
+                        <div class="tong phivanchuyen normal-checkout-shipping">Phí vận chuyển:</div>
+                        <div class="tong phivanchuyen checkout-shipping-notify close">Phí vận chuyển (*):</div>
+                        <div class="tong tongthanhtoan">Tổng thanh toán:</div>
+                    </div>
+                    <div class="container__payment-total-delivery-price">
+                        <div class="tong tien tienhang">{{discount totalPriceProduct 0}}</div>
+                        <div class="tong tien phiship">{{discount shippingFee 0}}</div>
+                        <div class="tong tien thanhtoan">{{discount totalPrice 0}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-order">
+                <form action="/pay-cash" method="POST">
+                    <button class="primary-button">Đặt Hàng</button>
+                </form>
+            </div>
+
+            <div class="btn-order-paypal close"> 
+                <form action="/pay" method="POST">
+                    <button class="primary-button">Đặt Hàng</button>
+                </form>
+            </div>
+
+            <div class="checkout-shipping-notify close">(*) Phí vận chuyển sẽ phải giao tiền mặt cho tài xế, bạn sẽ chỉ thanh toán tiền hàng</div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://js.stripe.com/v2"></script>

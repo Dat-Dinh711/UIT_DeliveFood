@@ -1,0 +1,33 @@
+<div class="order">
+    <form action="/shipper/order-list/search" method="GET" class="header-search__btn order__search">
+        <input type="text" name="keyword" placeholder="Tìm kiếm đơn hàng ..." class="header-search__btn-input">
+        <button class="header-search__btn-icon"><i class="fas fa-search"></i></button>
+    </form>
+    <div class="order__product">
+        <div class="order__product-title">
+            <div>Mã đơn hàng</div>
+            <div>Điểm lấy hàng</div>
+            <div>Giao hàng đến</div>
+            <div>Giá trị đơn hàng</div>
+            <div>Phí vận chuyển</div>
+        </div>
+
+        <div class="order__list">
+            {{#if orders}}
+            {{#each orders}}
+            <a href="/shipper/order-list/{{this._id}}" class="order__item-link">
+                <ul class="order__item">
+                    <li>{{this.orderID}}</li>
+                    <li>{{this.shopAddress}}</li>
+                    <li>{{this.address}}</li>
+                    <li>{{discount this.totalPrice 0}}</li>
+                    <li>{{discount this.shippingFee 0}}</li>
+                </ul>
+            </a>
+            {{/each}}
+            {{else}}
+            <div class="no-order">Chưa có đơn hàng nào cần giao</div>
+            {{/if}}
+        </div>
+    </div>
+</div>

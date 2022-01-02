@@ -1,0 +1,48 @@
+<div class="order-detail">
+    <div class="order-detail__info">
+        <div class="order-detail__info-content">
+            <div class="order-detail__info-title">Thông tin cửa hàng</div>
+            <hr class="divider" />
+            <div class="order-detail__info-detail">
+                <table class="order-detail__info-detail-table">
+                    <colgroup>
+                        <col span="1" style="width: 20%; margin: 0 5px" />
+                        <col span="1" style="width: 80%; margin: 0 5px" />
+                    </colgroup>
+                    <tr>
+                        <td>Tên cửa hàng</td>
+                        <td>{{user.shopName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Địa chỉ cửa hàng</td>
+                        <td>{{user.shopAddress}}</td>
+                    </tr>
+                    <tr>
+                        <td>Ngày tạo cửa hàng</td>
+                        <td>{{user.shopDate}}</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng sản phẩm</td>
+                        <td>{{user.totalProduct}}</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng sản phẩm bán được</td>
+                        <td>{{user.totalProductSell}}</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng doanh thu</td>
+                        <td>{{discount user.totalRevenueSeller 0}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="order-detail__control">
+        <a href="/seller/account/edit">
+            <button onclick="location.href='./EditShopDetail.html'" class="primary-button order-detail__control-btn">
+                Chỉnh sửa thông tin
+            </button>
+        </a>
+    </div>
+</div>

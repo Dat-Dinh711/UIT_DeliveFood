@@ -1,0 +1,86 @@
+<div class="grid">
+    <form action="/order" method="POST">
+        <div class="container-content">
+            {{#if products}}
+            <div class="cart__header cart__card">
+                <div class="checkbox">
+                    <input type="checkbox" name="checkall" class="checkbox-cart-all"/>
+                </div>
+                <div class="sanpham">
+                <span>Sản phẩm</span>
+                    <div class="delete-all">Xóa tất cả</div>
+                </div>
+                <div class="dongia">
+                    Đơn giá
+                </div>
+                <div class="soluong qtyTitle">
+                    Số lượng
+                </div>
+                <div class="sotien">
+                    Số tiền
+                </div>
+                <div class="thaotac">
+                    Thao tác
+                </div>
+            </div>
+            {{#each products}} 
+            <div class="cart__card cart__items">
+                <div class="checkbox">
+                    <input class="checkbox-cart-items" type="checkbox" name="cartIDs[]" value="{{this.item._id}}"/>
+                </div>
+                <div class="sanpham">
+                    <div class="sanPhamCoHinh">
+                        <a href="/product-list/{{this.item.slug}}">
+                            <img src="/{{this.item.image}}" />
+                        </a>
+                        <a href="/product-list/{{this.item.slug}}" class="sanPhamCoHinh">
+                            <span class="textSP">{{this.item.productName}}</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="dongia">
+                    <span>{{discount this.item.price this.item.discount}}</span>
+                </div>
+                <div class="soluong">
+                    <div class="block-quantity">
+                        <div class="quantity-btn btn-minus sub-qty-btn" style="border-radius: 8px 0px 0px 8px; " data-id="{{this.item._id}}">
+                            <i class="fas fa-minus "></i>
+                        </div>
+                        <input type="text" min="2" class="quantity-btn quantity-btn-count" role="spinbutton " aria-valuenow="1 " value={{this.qty}}>
+                        <div class="quantity-btn btn-plus add-qty-btn" onclick="countProduct() " style="border-radius: 0px 8px 8px 0px; " data-id="{{this.item._id}}">
+                            <i class="fas fa-plus "></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="sotien">
+                    <span>{{discount this.price 0}}</span>
+                </div>
+                <div class="thaotac">
+                    <div class="clear-qty-btn" data-id="{{this.item._id}}" style="cursor: pointer;">Xóa</div> 
+                </div>
+            </div>
+            {{/each}}
+
+            <div class="cart__card cart__checkout">
+                <div class="thanhTien">
+                    <span class="text1">Tổng thanh toán ({{lcAuthUser.cart.totalItems}} sản phẩm):</span>
+                    <span class="text2">{{discount totalPrice 0}}</span>
+                </div>
+                <div class="thanhToan">
+                    <a href="/checkout">
+                        <button class="primary-button checkout-btn disabled" disabled>Mua hàng</button>
+                    </a>
+                </div>
+            </div>
+            {{else}}
+            <div class="no-products">
+                <img src="/img/Cart/No_Product.png" class="no-products-img">
+                <div class="no-products-title">Giỏ hàng của bạn còn trống</div>
+                <a href="/" class="btn btn--primary">Mua ngay</a>
+            </div>
+            {{/if}}
+        </div>
+    </form>
+</div>
+
+<form method="POST" class="qty-form"></form>

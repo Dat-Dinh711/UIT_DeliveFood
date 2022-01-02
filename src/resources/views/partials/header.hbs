@@ -1,0 +1,320 @@
+<header class="header">
+    <div class="header-search">
+        <div class="header-search__logo">
+            <a href="/">
+                <img src="/img/Logo.png" alt="Logo" class="header-search__logo-img">
+            </a>
+        </div>
+        <div>
+            <form method="GET" action="/search" class="header-search__btn-form header-search__btn">
+                <input type="text" name="keyword" placeholder="Tìm kiếm ..." class="header-search__btn-input" required>
+                <button class="header-search__btn-icon"><i class="fas fa-search"></i></button> 
+            </form>
+        </div>
+        <div class="header-search__notify">
+            <i class="fas fa-bell header-search__notify-icon"></i>
+            {{#if lcIsAuthenticated}}
+            <span class="header-search__notify-notice">0</span>
+            {{/if}}
+
+            <!-- Notify list -->
+            <div class="header-search__notify-list">
+                {{#if lcIsAuthenticated}}
+                <!-- Chưa có sản phẩm -->
+                {{!-- <img src="/img/Header/no_cart.png" alt="" class="header-search__notify-no-notify-img"> --}}
+
+                <!-- Đã có sản phẩm -->
+                <h4 class="header-search__notify-list-heading">Thông báo mới nhất</h4>
+                <ul class="header-search__notify-list-item">
+                    <li class="header-search__notify-item">
+                        <a href="" class="header-search__notify-link">
+                            <img src="img/Product/Bông cải xanh.jpg" alt="" class="header-search__notify-img">
+                            <div class="header-search__notify-info">
+                                <span class="header-search__notify-name">Bông cải xanh</span>
+                                <span class="header-search__notify-desc">Sản phẩm an toàn, thân thiên, 100% organic</span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="header-search__notify-item header-search__notify-item-viewed">
+                        <a href="" class="header-search__notify-link">
+                            <img src="img/Product/Bông cải xanh.jpg" alt="" class="header-search__notify-img">
+                            <div class="header-search__notify-info">
+                                <span class="header-search__notify-name">Bông cải xanh</span>
+                                <span class="header-search__notify-desc">Sản phẩm an toàn, thân thiên, 100% organic</span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="header-search__notify-item">
+                        <a href="" class="header-search__notify-link">
+                            <img src="img/Product/Bông cải xanh.jpg" alt="" class="header-search__notify-img">
+                            <div class="header-search__notify-info">
+                                <span class="header-search__notify-name">Bông cải xanh</span>
+                                <span class="header-search__notify-desc">Sản phẩm an toàn, thân thiên, 100% organic</span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="header-search__notify-item">
+                        <a href="" class="header-search__notify-link">
+                            <img src="img/Product/Bông cải xanh.jpg" alt="" class="header-search__notify-img">
+                            <div class="header-search__notify-info">
+                                <span class="header-search__notify-name">Bông cải xanh</span>
+                                <span class="header-search__notify-desc">Sản phẩm an toàn, thân thiên, 100% organic</span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="header-search__notify-item header-search__notify-item-viewed">
+                        <a href="" class="header-search__notify-link">
+                            <img src="img/Product/Bông cải xanh.jpg" alt="" class="header-search__notify-img">
+                            <div class="header-search__notify-info">
+                                <span class="header-search__notify-name">Bông cải xanh</span>
+                                <span class="header-search__notify-desc">Sản phẩm an toàn, thân thiên, 100% organic</span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="header-search__notify-item">
+                        <a href="" class="header-search__notify-link">
+                            <img src="img/Product/Bông cải xanh.jpg" alt="" class="header-search__notify-img">
+                            <div class="header-search__notify-info">
+                                <span class="header-search__notify-name">Bông cải xanh</span>
+                                <span class="header-search__notify-desc">Sản phẩm an toàn, thân thiên, 100% organic</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <footer class="header__notify-footer">
+                    <a href="" class="header__notify-footer-link">Xem tất cả</a>
+                </footer>
+                {{else}}
+                <img src="/img/Header/not_logged_in.png" alt="" class="header-search__cart-no-cart-img">
+                <span class="header-search__notify-no-notify-title">Đăng nhập để xem thông báo</span>
+                {{/if}}
+            </div>
+        </div>
+        <div class="header-search__cart">
+            <a href="/cart" style="color: black;">
+                <i class="fas fa-shopping-cart header-search__cart-icon"></i>
+                {{#if lcIsAuthenticated}}
+                    {{#if lcAuthUser.cart.totalItems}}
+                    <span class="header-search__cart-notice">{{lcAuthUser.cart.totalItems}}</span>
+                    {{else}}
+                    <span class="header-search__cart-notice">0</span>
+                    {{/if}}
+                {{/if}}
+            </a>
+
+            <!-- Cart list -->
+            <div class="header-search__cart-list">
+                {{#if lcIsAuthenticated}}
+                {{#if lcCart}}
+                <!-- Đã có sản phẩm -->
+                <h4 class="header-search__cart-list-heading">Sản phẩm đã thêm</h4>
+                <ul class="header-search__cart-list-item">
+                    {{#each lcCart}}
+                    <li class="header-search__cart-item">
+                        <a href="/product-list/{{this.item.slug}}" class="header-search__cart-link">
+                            <img src="/{{this.item.image}}" alt="" class="header-search__cart-img">
+                            <div class="header-search__cart-info">
+                                <div class="header-search__cart-title">
+                                    <div class="header-search__cart-name">{{this.item.productName}}</div>
+                                    <div class="header-search__cart-qty">SL: {{this.qty}}</div>
+                                </div>
+                                <div class="header-search__cart-price">
+                                    <span>{{discount this.price 0}}</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    {{/each}}
+                </ul>
+                <footer class="header__cart-footer">
+                    <a href="/cart" class="header__cart-footer-link">Xem tất cả</a>
+                </footer>
+                {{else}}
+                <!-- Chưa có sản phẩm -->
+                <img src="/img/Header/no_cart.png" alt="" class="header-search__cart-no-cart-img">
+                <div class="header-search__cart-no-cart-title">Chưa có sản phẩm nào</div>
+                {{/if}}
+                {{else}}
+                <img src="/img/Header/not_logged_in.png" alt="" class="header-search__cart-no-cart-img">
+                <span class="header-search__cart-no-cart-title">Đăng nhập để xem giỏ hàng</span>
+                {{/if}}
+            </div>
+        </div>
+        <div class="header-search__user">
+            {{#if lcIsAuthenticated}}
+            <div class="header-search__user-info">
+                {{#if lcAuthUser.avatar}}
+                <img src="/{{lcAuthUser.avatar}}" alt="{{lcAuthUser.avatar}}" class="header-search__user-icon">
+                {{else}}
+                <i class="fas fa-user-circle header-search__user-icon"></i>
+                {{/if}}
+                <span class="header-search__user-name">{{lcAuthUser.userName}}</span>
+            </div>
+            {{#switch lcAuthUser.role}}
+                {{#case 'buyer'}}
+                <div class="header-search__user-list-logged">
+                    <ul class="header-search__user-list-item">
+                        <li class="header-search__user-item">
+                            <a href="/user/account/profile" class="header-search__user-item-link">Thông tin tài khoản</a>
+                        </li>
+                        <li class="header-search__user-item">
+                            <a href="/user/purchase" class="header-search__user-item-link">Đơn mua</a>
+                        </li>
+                        <li class="header-search__user-item header-search__seller-register">Đăng ký bán hàng</li>
+                        <li class="header-search__user-item header-search__shipper-register">Đăng ký giao hàng</li>
+                        <li class="header-search__user-item header-search__user-log-out">Đăng xuất</li>
+                    </ul>
+                </div>
+                {{/case}}
+                {{#case 'seller'}}
+                <div class="header-search__user-list-logged">
+                    <ul class="header-search__user-list-item">
+                        <li class="header-search__user-item">
+                            <a href="/user/account/profile" class="header-search__user-item-link">Thông tin tài khoản</a>
+                        </li>
+                        <li class="header-search__user-item">
+                            <a href="/user/purchase" class="header-search__user-item-link">Đơn mua</a>
+                        </li>
+                        <li class="header-search__user-item">
+                            <a href="/seller/overview" class="header-search__user-item-link">Quản lý cửa hàng</a>
+                        </li>
+                        <li class="header-search__user-item header-search__user-log-out">Đăng xuất</li>
+                    </ul>
+                </div>
+                {{/case}}
+                {{#case 'shipper'}}
+                <div class="header-search__user-list-logged">
+                    <ul class="header-search__user-list-item">
+                        <li class="header-search__user-item">
+                            <a href="/user/account/profile" class="header-search__user-item-link">Thông tin tài khoản</a>
+                        </li>
+                        <li class="header-search__user-item">
+                            <a href="/user/purchase" class="header-search__user-item-link">Đơn mua</a>
+                        </li>
+                        <li class="header-search__user-item">
+                            <a href="/shipper/overview" class="header-search__user-item-link">Quản lý đơn giao</a>
+                        </li>
+                        <li class="header-search__user-item header-search__user-log-out">Đăng xuất</li>
+                    </ul>
+                </div>
+                {{/case}}
+            {{/switch}}
+            {{else}}
+            <div class="header-search__user-info">
+                <i class="fas fa-user-circle header-search__user-icon"></i>
+            </div>
+            <div class="header-search__user-list">
+                <ul class="header-search__user-list-item">
+                    <li class="header-search__user-item js-login">Đăng nhập</li>
+                    <li class="header-search__user-item js-register">Đăng ký</li>
+                </ul>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+
+    <div class="navbar">
+        <div class="grid">
+            <ul class="navbar-list">
+                <li class="navbar-item">
+                    <a href="/" class="nav-link">
+                        Trang chủ
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/about" class="nav-link">
+                        Về chúng tôi
+                    </a>
+                </li>
+                <li class="navbar-item menu-products">
+                    <a href="/product-list" class="nav-link">
+                        Danh sách sản phẩm
+                        <i class="fas fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown__menu-products">
+                        <ul class="dropdown__menu-products-list">
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Rau Củ" class="dropdown-menu-products-item-link">Rau Củ</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Rau Củ Quả Đóng Hộp" class="dropdown-menu-products-item-link">Rau Củ Quả Đóng Hộp</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Rau Củ Quả Đông Lạnh" class="dropdown-menu-products-item-link">Rau Củ Quả Đông Lạnh</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Trái Cây Tươi" class="dropdown-menu-products-item-link">Trái Cây Tươi</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Trái Cây Khô" class="dropdown-menu-products-item-link">Trái Cây Khô</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Các Loại Hạt" class="dropdown-menu-products-item-link">Các Loại Hạt</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Mì và Nui" class="dropdown-menu-products-item-link">Mì & Nui</a>
+                            </li>
+                        </ul>
+                        <ul class="dropdown__menu-products-list">
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Bánh Mì" class="dropdown-menu-products-item-link">Bánh Mì</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Trứng và Sữa" class="dropdown-menu-products-item-link">Trứng & Sữa</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Đồ uống" class="dropdown-menu-products-item-link">Đồ uống</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Đồ uống có cồn" class="dropdown-menu-products-item-link">Đồ uống có cồn</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Trà" class="dropdown-menu-products-item-link">Trà</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Bánh Kẹo và Snack" class="dropdown-menu-products-item-link">Bánh Kẹo & Snack</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Thịt Hải Sản Tươi Sống" class="dropdown-menu-products-item-link">Thịt Hải Sản Tươi Sống</a>
+                            </li>
+                        </ul>
+                        <ul class="dropdown__menu-products-list">
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Thịt Hải Sản Đóng Hộp" class="dropdown-menu-products-item-link">Thịt Hải Sản Đóng Hộp</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Thịt Hải Sản Đông Lạnh" class="dropdown-menu-products-item-link">Thịt Hải Sản Đông Lạnh</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Thịt Nguội" class="dropdown-menu-products-item-link">Thịt Nguội</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Vật Dụng Gia Đình" class="dropdown-menu-products-item-link">Vật Dụng Gia Đình</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Gia Vị và Dầu Ăn" class="dropdown-menu-products-item-link">Gia Vị & Dầu Ăn</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Thực Phẩm Bổ Sung" class="dropdown-menu-products-item-link">Thực Phẩm Bổ Sung</a>
+                            </li>
+                            <li class="dropdown-menu-products-item">
+                                <a href="/product-list/category?q=Mẹ và Bé" class="dropdown-menu-products-item-link">Mẹ & Bé</a>
+                            </li>
+                        </ul>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="/recipe" class="nav-link">
+                        Công thức
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</header>

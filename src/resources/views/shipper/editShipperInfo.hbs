@@ -1,0 +1,36 @@
+<form action="/shipper/info/edit" method="POST" class="shipper-detail">
+    <div class="shipper-detail__info">
+        <div class="shipper-detail__info-content">
+        <div class="shipper-detail__info-title">Thông tin tài xế</div>
+        <hr class="divider" />
+        <div class="shipper-detail__info-detail">
+            <table class="shipper-detail__info-detail-table">
+            <colgroup>
+                <col span="1" style="width: 15%; margin: 0 5px" />
+                <col span="1" style="width: 85%; margin: 0 5px" />
+            </colgroup>
+            <tr>
+                <td>Tên tài xế</td>
+                <td><input name="shipperName" type="text" value="{{user.shipperName}}"/></td>
+            </tr>
+            <tr>
+                <td>Địa chỉ tài xế</td>
+                <td><input name="shipperAddress" type="text" value="{{user.shipperAddress}}"/></td>
+            </tr>
+            <tr>
+                <td>Biển số xe</td>
+                <td><input type="text" name="shipperLicensePlates" value="{{user.shipperLicensePlates}}"/></td>
+            </tr>
+            <tr>
+                <td>Loại xe</td>
+                <td><input type="text" name="shipperTypeMotor" value="{{user.shipperTypeMotor}}"/></td>
+            </tr>
+            </table>
+        </div>
+        </div>
+    </div>
+
+    <div class="shipper-detail__control">
+        <button class="primary-button shipper-detail__control-btn">Cập nhật</button>
+    </div>
+</form>

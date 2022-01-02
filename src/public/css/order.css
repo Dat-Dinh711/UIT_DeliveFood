@@ -1,0 +1,265 @@
+:root {
+  --primary-color: #8ABF44;
+  --primary-color-hover: #668a36;
+  --text-color: #828282;
+  --white-color: #fff;
+  --black-color: #000;
+  --product-name-color: #6A8491;
+  --product-border: #E9E9E9;
+  --header-height: 157px;
+  --search-height: 100px;
+  --navbar-height: 50px;
+  --banner-height: 564px;
+  --footer-height: 260px;
+  --product-width: 250px;
+  --product-height: 325px; }
+
+.dropdown__menu-products {
+  top: 49.5px; }
+
+.order-all__navbar {
+  width: 100%;
+  height: 50px;
+  background-color: var(--white-color);
+  border-radius: 5px; }
+
+.order-all__navbar-list {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+  color: var(--text-color); }
+
+.order-all__navbar-item {
+  width: 200px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer; }
+
+.order-all__navbar-item:hover {
+  color: var(--primary-color); }
+
+.order-all__navbar-item-active {
+  color: var(--primary-color);
+  font-weight: 500; }
+
+.order-all__search {
+  margin-top: 15px;
+  background-color: #e5e5e5;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center; }
+
+.order-all__search-icon {
+  font-size: 1.8rem;
+  color: var(--text-color);
+  margin: 0 20px; }
+
+.order-all__search-icon-input {
+  border: none;
+  outline: none;
+  width: 95%;
+  height: 100%;
+  background-color: #e5e5e5;
+  font-size: 1.4rem; }
+
+.order-all__item-has .order-all__item-multi {
+  display: block; }
+
+.order-all__item-no .order-all__item-content-no-order {
+  display: flex; }
+
+.order-all__item-content-no-order {
+  width: 100%;
+  height: 300px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white-color); }
+
+.order-all__item-content-no-order img {
+  width: 10%; }
+
+.order-all__item-content-no-order-title {
+  font-size: 1.6rem;
+  margin-top: 20px;
+  color: var(--text-color); }
+
+.order-all__item {
+  margin: 15px 0;
+  background-color: var(--white-color);
+  border-radius: 5px;
+  width: 100%; }
+
+.order-all__item-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0; }
+
+.order-all__info {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #c4c4c4; }
+
+.order-all__info-shop {
+  display: flex;
+  align-items: center; }
+
+.order-all__info-shop-name {
+  text-decoration: none;
+  font-size: 1.8rem;
+  color: var(--text-color);
+  margin-right: 10px; }
+
+.order-all__info-shop-contact {
+  width: 90px;
+  height: 30px;
+  border: 1px solid var(--primary-color);
+  margin-right: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; }
+
+.order-all__info-shop-contact:last-child {
+  border: 1px solid #c4c4c4; }
+
+.order-all__info-shop-contact-chat-icon {
+  font-weight: 500;
+  color: #8ABF44;
+  font-size: 1.4rem;
+  position: absolute;
+  left: 8%;
+  top: 20%; }
+
+.order-all__info-shop-contact-chat-tittle {
+  padding-left: 20px;
+  color: var(--primary-color); }
+
+.order-all__info-shop-contact-visit-icon {
+  color: #707070;
+  font-size: 1.4rem;
+  position: absolute;
+  left: 12%;
+  top: 20%; }
+
+.order-all__info-shop-contact-visit-tittle {
+  padding-left: 20px;
+  color: var(--text-color); }
+
+.order-all__status {
+  font-size: 1.6rem; }
+
+.order-all__status-success .order-all__status-success-content,
+.order-all__status-success-delivery .order-all__status-success-content {
+  display: inline;
+  color: var(--primary-color); }
+
+.order-all__status-confirm .order-all__status-confirm-content,
+.order-all__status-shipper .order-all__status-shipper-content,
+.order-all__status-delivering .order-all__status-delivering-content {
+  display: inline;
+  color: var(--text-color); }
+
+.order-all__status-cancel .order-all__status-cancel-content {
+  display: inline;
+  color: #EC6D6D; }
+
+.order-all__status-content {
+  display: none; }
+
+.order-all__product {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #c4c4c4; }
+
+.order-all__product-info {
+  display: flex;
+  align-items: center; }
+
+.order-all__product-img {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px; }
+
+.order-all__product-detail {
+  font-size: 1.6rem; }
+
+.order-all__product-name {
+  color: var(--primary-color);
+  text-decoration: none; }
+
+.order-all__product-quantity {
+  margin-top: 10px; }
+
+.order-all__product-price {
+  font-size: 1.6rem;
+  color: var(--primary-color); }
+
+.order-all__product-total {
+  width: 98%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 0;
+  font-size: 1.8rem;
+  color: var(--text-color); }
+
+.order-all__product-total-price {
+  color: var(--primary-color);
+  margin-left: 10px; }
+
+.order-all__control {
+  width: 98%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0 20px 0; }
+
+.order-all__control-btn {
+  width: 165px;
+  margin-left: 25px;
+  display: none; }
+
+.order-all__status-success .order-all__control-success-cancel,
+.order-all__status-success .order-all__control-success-rating,
+.order-all__status-success-delivery .order-all__control-success-cancel,
+.order-all__status-cancel .order-all__control-success-cancel {
+  display: inline; }
+
+.order-all__status-confirm .order-all__control-confirm-shipper,
+.order-all__status-shipper .order-all__control-confirm-shipper {
+  display: inline; }
+
+.order-all__status-delivering .order-all__control-delivering {
+  display: inline; }
+
+.order-link {
+  text-decoration: none;
+  color: var(--text-color); }
+
+.order-link.order-all__navbar-item-active,
+.order-link.confirm-active,
+.order-link.shipper-active,
+.order-link.delivering-active,
+.order-link.success-active,
+.order-link.cancel-active {
+  color: var(--primary-color); }

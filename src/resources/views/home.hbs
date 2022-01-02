@@ -1,0 +1,340 @@
+<div class="container__banner">
+    <div class="container__banner-text">
+        <span class="container__banner-title">UIT - DeliveFood</span>
+        <span class="container__banner-desc">You want, you pick, you order <br>
+        We sell, we sort, we deliver</span>
+    </div>
+    <div class="container__banner-wrap">
+        <input type="radio" name="radio" id="radio1">
+        <input type="radio" name="radio" id="radio2">
+        <input type="radio" name="radio" id="radio3">
+        <input type="radio" name="radio" id="radio4">
+
+        <div class="slide first">
+            <img src="img/Home Page/Banner.jpg" alt="" class="container__banner-img">
+        </div>
+        <div class="slide">
+            <img src="img/Home Page/Banner2.jpg" alt="" class="container__banner-img">
+        </div>
+        <div class="slide">
+            <img src="img/Home Page/Banner3.jpg" alt="" class="container__banner-img">
+        </div>
+        <div class="slide last">
+            <img src="img/Home Page/Banner4.jpg" alt="" class="container__banner-img">
+        </div>
+
+        <div class="navigation-auto">
+            <div class="auto-btn1"></div>
+            <div class="auto-btn2"></div>
+            <div class="auto-btn3"></div>
+            <div class="auto-btn4"></div>
+        </div>
+    </div>
+    <div class="navigation-manual">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+        <label for="radio3" class="manual-btn"></label>
+        <label for="radio4" class="manual-btn"></label>
+    </div>
+</div>
+
+<div class="grid">
+    <div class="container-content">
+        <div class="container__featured">
+            <span class="container__products-title">Mặt hàng nổi bật</span>
+
+            <div class="container__featured-products">
+                <div class="grid__row">
+                    {{#each productsFeatured}}
+                    <div class="grid__column-5">
+                        <div class="container__products-item container__products-onsale">
+                            {{!-- <div class="container__products-new">
+                                <span>NEW</span>
+                            </div> --}}
+                            {{#if this.onSale}}
+                            <div class="container__products-sale">
+                                <span>ON SALE</span>
+                            </div>
+                            {{/if}}
+                            <form action="/add-to-cart/{{this._id}}" method="POST">
+                                <button class="container__products-cart">
+                                    <i class="fas fa-shopping-cart container__products-cart-icon"></i>
+                                </button>
+                            </form>
+                            <a href="/product-list/{{this.slug}}">
+                                <img src="{{this.image}}" alt="{{this.productName}}" class="container__products-img">
+                            </a>
+                            <div class="container__products-rating">
+                                {{#RatingReviewProductDetailView rating=this.rating}}{{/RatingReviewProductDetailView}}
+                            </div>
+                            <div class="container__products-info">
+                                <a href="/product-list/{{this.slug}}" class="container__products-name">{{this.productName}}</a>
+                                {{#if this.onSale}}
+                                <div class="container__products-price">{{discount this.price this.discount}}</div>
+                                {{else}}
+                                <div class="container__products-price">{{discount this.price 0}}</div>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+
+            <div class="container__featured-banner">
+                <img src="img/Home Page/Featured_Banner_1.jpg" alt="" class="container__featured-banner-img">
+                <img src="img/Home Page/Featured_Banner_2.jpg" alt="" class="container__featured-banner-img">
+            </div>
+        </div>
+
+        <div class="container__vegetables">
+            <span class="container__products-title">Rau Củ</span>
+
+            <div class="container__vegetables-products">
+                <div class="grid__column-5">
+                    <a href="/search?keyword=rau+củ" class="container__vegetables-banner">
+                        <img src="img/Home Page/Vegetables_Banner.jpg" alt="">
+                    </a>
+                </div>
+                <div class="grid__2column-2">
+                    <div class="container__vegetables-products-item container__vegetables-products-onsale">
+                        {{!-- <div class="container__vegetables-products-new">
+                            <span>NEW</span>
+                        </div> --}}
+                        {{#if vegetableProductsThumbnail.onSale}}
+                        <div class="container__vegetables-products-sale">
+                            <span>ON SALE</span>
+                        </div>
+                        {{/if}}
+                        <form action="/add-to-cart/{{vegetableProductsThumbnail._id}}" method="POST">
+                            <button class="container__vegetables-products-cart">
+                                <i class="fas fa-shopping-cart container__vegetables-products-cart-icon"></i>
+                            </button>
+                        </form>
+                        <a href="/product-list/{{vegetableProductsThumbnail.slug}}">
+                            <img src="{{vegetableProductsThumbnail.image}}" alt="{{vegetableProductsThumbnail.productName}}" class="container__vegetables-products-img">
+                        </a>
+                        <div class="container__vegetables-products-rating">
+                            {{#RatingReviewProductDetailView rating=vegetableProductsThumbnail.rating}}{{/RatingReviewProductDetailView}}
+                        </div>
+                        <div class="container__vegetable-products-info">
+                            <a href="/product-list/{{vegetableProductsThumbnail.slug}}" class="container__vegetables-products-name">{{vegetableProductsThumbnail.productName}}</a>
+                            <div class="container__vegetables-products-desc">{{vegetableProductsThumbnail.desc}}</div>
+                            {{#if vegetableProductsThumbnail.onSale}}
+                            <div class="container__vegetables-products-price">{{discount vegetableProductsThumbnail.price vegetableProductsThumbnail.discount}}</div>
+                            {{else}}
+                            <div class="container__vegetables-products-price">{{discount vegetableProductsThumbnail.price 0}}</div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid__row-2">
+                    {{#each productsVegetable}}
+                    <div class="grid__row-2-column">
+                        <div class="container__products-item container__products-onsale">
+                            {{!-- <div class="container__products-new">
+                                <span>NEW</span>
+                            </div> --}}
+                            {{#if this.onSale}}
+                            <div class="container__products-sale">
+                                <span>ON SALE</span>
+                            </div>
+                            {{/if}}
+                            <form action="/add-to-cart/{{this._id}}" method="POST">
+                                <button class="container__products-cart">
+                                    <i class="fas fa-shopping-cart container__products-cart-icon"></i>
+                                </button>
+                            </form>
+                            <a href="/product-list/{{this.slug}}">
+                                <img src="{{this.image}}" alt="{{this.productName}}" class="container__products-img">
+                            </a>
+                            <div class="container__products-rating">
+                                {{#RatingReviewProductDetailView rating=this.rating}}{{/RatingReviewProductDetailView}}
+                            </div>
+                            <div class="container__products-info">
+                                <a href="/product-list/{{this.slug}}" class="container__products-name">{{this.productName}}</a>
+                                {{#if this.onSale}}
+                                <div class="container__products-price">{{discount this.price this.discount}}</div>
+                                {{else}}
+                                <div class="container__products-price">{{discount this.price 0}}</div>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        <div class="container__meat">
+            <span class="container__products-title">Thịt</span>
+
+            <div class="container__meat-products">
+                <div class="grid__row-4">
+                    <a href="/search?keyword=thịt" class="container__meat-banner">
+                        <img src="img/Home Page/Meat_banner.jpg" alt="">
+                    </a>
+                    {{#each productsMeat}}
+                    <div class="grid__row-4-column">
+                        <div class="container__products-item container__products-onsale">
+                            {{!-- <div class="container__products-new">
+                                <span>NEW</span>
+                            </div> --}}
+                            {{#if this.onSale}}
+                            <div class="container__products-sale">
+                                <span>ON SALE</span>
+                            </div>
+                            {{/if}}
+                            <form action="/add-to-cart/{{this._id}}" method="POST">
+                                <button class="container__products-cart">
+                                    <i class="fas fa-shopping-cart container__products-cart-icon"></i>
+                                </button>
+                            </form>
+                            <a href="/product-list/{{this.slug}}">
+                                <img src="{{this.image}}" alt="{{this.productName}}" class="container__products-img">
+                            </a>
+                            <div class="container__products-rating">
+                                {{#RatingReviewProductDetailView rating=this.rating}}{{/RatingReviewProductDetailView}}
+                            </div>
+                            <div class="container__products-info">
+                                <a href="/product-list/{{this.slug}}" class="container__products-name">{{this.productName}}</a>
+                                {{#if this.onSale}}
+                                <div class="container__products-price">{{discount this.price this.discount}}</div>
+                                {{else}}
+                                <div class="container__products-price">{{discount this.price 0}}</div>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+
+                <div class="container__meat-best-seller">
+                    <div class="container__meat-best-seller-content">
+                        <div class="container__meat-best-seller-title">Best Seller</div>
+                        {{#each productsBestSeller}}
+                        <div class="container__meat-best-seller-item">
+                            <a href="/product-list/{{this.slug}}">
+                                <img src="{{this.image}}" alt="{{this.productName}}" class="container__meat-best-seller-img">
+                            </a>
+                            <div class="container__meat-best-seller-info">
+                                <a href="/product-list/{{this.slug}}" class="container__products-name container__meat-best-seller-name">{{this.productName}}</a>
+                                {{#if this.onSale}}
+                                <div class="container__meat-best-seller-price">{{discount this.price this.discount}}</div>
+                                {{else}}
+                                <div class="container__meat-best-seller-price">{{discount this.price 0}}</div>
+                                {{/if}}
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container__fruit">
+            <span class="container__products-title">Trái cây</span>
+
+            <div class="container__fruit-products">
+                <div class="grid__2column-2">
+                    <div class="container__vegetables-products-item container__vegetables-products-onsale">
+                        {{!-- <div class="container__vegetables-products-new">
+                            <span>NEW</span>
+                        </div> --}}
+                        {{#if fruitProductThumbnail.onSale}}
+                        <div class="container__vegetables-products-sale">
+                            <span>ON SALE</span>
+                        </div>
+                        {{/if}}
+                        <form action="/add-to-cart/{{fruitProductThumbnail._id}}" method="POST">
+                            <button class="container__vegetables-products-cart">
+                                <i class="fas fa-shopping-cart container__vegetables-products-cart-icon"></i>
+                            </button>
+                        </form>
+                        <a href="/product-list/{{fruitProductThumbnail.slug}}">
+                            <img src="{{fruitProductThumbnail.image}}" alt="{{fruitProductThumbnail.productName}}" class="container__vegetables-products-img">
+                        </a>
+                        <div class="container__vegetables-products-rating">
+                            {{#RatingReviewProductDetailView rating=fruitProductThumbnail.rating}}{{/RatingReviewProductDetailView}}
+                        </div>
+                        <div class="container__vegetable-products-info">
+                            <a href="/product-list/{{fruitProductThumbnail.slug}}" class="container__vegetables-products-name">{{fruitProductThumbnail.productName}}</a>
+                            <div class="container__vegetables-products-desc">{{fruitProductThumbnail.desc}}</div>
+                            {{#if fruitProductThumbnail.onSale}}
+                            <div class="container__vegetables-products-price">{{discount fruitProductThumbnail.price fruitProductThumbnail.discount}}</div>
+                            {{else}}
+                            <div class="container__vegetables-products-price">{{discount fruitProductThumbnail.price 0}}</div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid__row-2">
+                    {{#each productsFruit}}
+                    <div class="grid__row-2-column">
+                        <div class="container__products-item">
+                            {{!-- <div class="container__products-new">
+                                <span>NEW</span>
+                            </div> --}}
+                            {{#if this.onSale}}
+                            <div class="container__products-sale">
+                                <span>ON SALE</span>
+                            </div>
+                            {{/if}}
+                            <form action="/add-to-cart/{{this._id}}" method="POST">
+                                <button class="container__products-cart">
+                                    <i class="fas fa-shopping-cart container__products-cart-icon"></i>
+                                </button>
+                            </form>
+                            <a href="/product-list/{{this.slug}}">
+                                <img src="{{this.image}}" alt="{{this.productName}}" class="container__products-img">
+                            </a>
+                            <div class="container__products-rating">
+                                {{#RatingReviewProductDetailView rating=this.rating}}{{/RatingReviewProductDetailView}}
+                            </div>
+                            <div class="container__products-info">
+                                <a href="/product-list/{{this.slug}}" class="container__products-name">{{this.productName}}</a>
+                                {{#if this.onSale}}
+                                <div class="container__products-price">{{discount this.price this.discount}}</div>
+                                {{else}}
+                                <div class="container__products-price">{{discount this.price 0}}</div>
+                                {{/if}}
+                                </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="grid__column-2">
+                    <a href="/search?keyword=trái+cây" class="container__vegetables-banner">
+                        <img src="img/Home Page/Fruit Banner.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container__recipe">
+            <span class="container__products-title">Công thức</span>
+
+            <div class="container__recipe-products">
+                {{#each recipes}}
+                <div class="container__recipe-item">
+                    <a href="/recipe/{{this.slug}}" class="container__recipe-item-link">
+                        <img src="{{this.thumbnail}}" alt="{{this.name}}" class="container__recipe-img">
+                        <div class="container__recipe-info">
+                            <div href="" class="container__recipe-title">{{this.name}}</div>
+                            <div class="container__recipe-desc">{{this.desc}}</div>
+                        </div>
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+            <div class="container__recipe-arrow-left">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="container__recipe-arrow-right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div> 
+    </div>
+</div>

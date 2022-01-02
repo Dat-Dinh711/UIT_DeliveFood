@@ -1,0 +1,376 @@
+<div class="modal js-modal">
+    <div class="modal__overlay"></div>
+
+    <div class="modal__body js-modal__body">
+
+        <!-- Register form -->
+        <div class="auth-form js-regis-auth-form">
+            <div class="auth-form__container">
+                <div class="auth-form__header">
+                    <h3 class="auth-form__heading">Đăng ký</h3>
+                    <span class="auth-form__switch-btn js-login">Đăng nhập</span>
+                </div>
+
+                <form method="POST" action="/store" id="register-form">
+                    <div class="auth-form__form">
+                        <div class="auth-form__group"> 
+                            <input type="text" name="userName" id="userName" class="auth-form__input" placeholder="Tên đăng nhập">
+                            <div class="form-message"></div>
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="text" name="phone" id="phone" class="auth-form__input" placeholder="SĐT của bạn">
+                            <div class="form-message"></div>
+                        </div>
+                        {{!-- <div class="auth-form__group">
+                            <input type="text" name="email" id="email" class="auth-form__input" placeholder="Email của bạn">
+                            <div class="form-message"></div>
+                        </div>
+                        <div class="auth-form__group">
+                            <div class="auth-form__group-flex">
+                                <label for="gender" class="auth-form__input-title">Giới tính:</label>
+                                <div class="auth-form__input-gender">
+                                    <input type="radio" name="gender" value="male">
+                                    <label for="male" class="auth-form__input-title">Nam</label>
+                                </div>
+                                <div class="auth-form__input-gender">
+                                    <input type="radio" name="gender" value="female">
+                                    <label for="female" class="auth-form__input-title">Nữ</label>
+                                </div>
+                                <div class="auth-form__input-gender">
+                                    <input type="radio" name="gender" value="other">
+                                    <label for="other" class="auth-form__input-title">Khác</label>
+                                </div>
+                            </div>
+                            <div class="form-message"></div>
+                        </div> --}}
+                        {{!-- <div class="auth-form__group">
+                            <div class="auth-form__group-flex">
+                                <label for="role" class="auth-form__input-title">Loại Tài khoản:</label>
+                                <select name="role" id="role" class="auth-form__input-select">
+                                    <option value="">-- Chọn loại tài khoản --</option>
+                                    <option value="buyer">Người Mua</option>
+                                    <option value="seller">Người Bán</option>
+                                    <option value="shipper">Tài Xế</option>
+                                </select>
+                            </div>
+                            <div class="form-message"></div>
+                        </div> --}}
+                        <div class="edit-table"></div>
+                        <div class="auth-form__group">
+                            <input type="password" name="password" id="password" class="auth-form__input" placeholder="Mật khẩu của bạn">
+                            <i class="far fa-eye edit-table" id="togglePassword"></i>
+                            <div class="form-message"></div>
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="password"  name="re_password" id="re_password" class="auth-form__input" placeholder="Nhập lại mật khẩu">
+                            <i class="far fa-eye edit-table" id="togglePassword"></i>
+                            <div class="form-message"></div>
+                        </div>
+                    </div>
+
+                    <div class="auth-form__aside">
+                        <p class="auth-form__policy-text">
+                            Bằng việc đăng ký, bạn đã đồng ý với UIT - DeliveFood về
+                            <a href="" class="auth-form__text-link">Điều khoản dịch vụ</a> &
+                            <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
+                        </p>
+                    </div>
+
+                    <div class="auth-form__control">
+                        <button class="btn btn--normal auth-form__control-back js-back-btn" style="width: 120px; height: 35px;">THOÁT</button>
+                        <button class="btn btn--primary regis-btn" style="width: 120px; height: 35px;">ĐĂNG KÝ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Login form -->
+        <div class="auth-form js-login-auth-form">
+            <div class="auth-form__container">
+                <div class="auth-form__header">
+                    <h3 class="auth-form__heading">Đăng nhập</h3>
+                    <span class="auth-form__switch-btn js-register">Đăng ký</span>
+                </div>
+
+                <form method="POST" action="/login" id="log-in-form">
+                    <div class="auth-form__form">
+                        <div class="auth-form__group">
+                                <input type="text" name="userName" id="userName" class="auth-form__input" placeholder="Tên đăng nhập">
+                                <div class="form-message"></div>
+                            </div>
+                        <div class="auth-form__group">
+                                <input type="password" name="password" id="password" class="auth-form__input" placeholder="Mật khẩu của bạn">
+                                <i class="far fa-eye edit-table" id="togglePassword"></i>
+                                <div class="form-message"></div>
+                        </div>
+                    </div>
+
+                    <div class="auth-form__aside">
+                        <div class="auth-form__help">
+                            <div class="auth-form__help-link auth-form__help-forgot">Quên mật khẩu</div>
+                            <span class="auth-form__help-separate"></span>
+                            <a href="" class="auth-form__help-link">Cần trợ giúp?</a>
+                        </div>
+                    </div>
+
+                    <div class="auth-form__control">
+                        <button class="btn btn--normal auth-form__control-back js-back-btn" style="width: 120px; height: 35px;">THOÁT</button>
+                        <button class="btn btn--primary" style="width: 120px; height: 35px;">ĐĂNG NHẬP</button>
+                    </div>
+                </form>
+            </div>
+
+            {{!-- <div class="auth-form__socials">
+                <div class="fb-login-button" data-width="200px" data-size="medium" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
+                <a style="width: 200px; height: 28px; background-color: #f5f5f5;" href="" class="auth-form__socials--google btn btn--size-s btn--with-icon g-signin2" data-onsuccess="onSignIn">
+                    <i class="auth-form__socials-icon fab fa-google"></i>
+                    <span class="auth-form__socials-label">Kết nối với Google</span>
+                </a>
+            </div> --}}
+        </div>
+
+        <!-- Forgot Password form -->
+        <div class="auth-form js-forgot-password-form">
+            <div class="auth-form__container">
+                <div class="auth-form__header">
+                    <h3 class="auth-form__heading">Quên mật khẩu</h3>
+                    <span class="auth-form__switch-btn js-login">Đăng nhập</span>
+                </div>
+
+                <form method="POST" action="/forgot-password" id="forgot-password-form">
+                    <div class="auth-form__form">
+                        <div class="auth-form__group">
+                            <input type="text" name="phone" id="phone" class="auth-form__input" placeholder="Số điện thoại đăng ký">
+                            <div class="form-message"></div>
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="password" name="password" id="password" class="auth-form__input" placeholder="Mật khẩu mới của bạn">
+                            <i class="far fa-eye edit-table" id="togglePassword"></i>
+                            <div class="form-message"></div>
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="password" name="re_password" id="re_password" class="auth-form__input" placeholder="Nhập lại mật khẩu mới của bạn">
+                            <i class="far fa-eye edit-table" id="togglePassword"></i>
+                            <div class="form-message"></div>
+                        </div>
+                    </div>
+
+                    <div class="auth-form__control">
+                        <button class="btn btn--normal auth-form__control-back js-back-btn" style="width: 120px; height: 35px;">THOÁT</button>
+                        <button class="btn btn--primary" style="width: 120px; height: 35px;">LƯU LẠI</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {{!-- Logout form --}}
+        <div class="auth-form js-logout-form">
+            <div class="auth-form__container">
+                <div class="logout-form__header">
+                    <h3 class="logout-form__heading">Đăng xuất?</h3>
+                </div>
+
+                <div class="logout-form__title">Bạn có chắc chắn muốn đăng xuất không?</div>
+
+                <div class="logout-form__control">
+                    <a href="/logout" class="btn logout-btn">ĐỒNG Ý</a>
+                    <button class="btn btn--normal js-back-btn">HỦY</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seller form -->
+        <div class="auth-form js-seller-form">
+            <div class="auth-form__container">
+                <div class="auth-form__header">
+                    <h3 class="auth-form__heading">Đăng ký bán hàng</h3>
+                </div>
+
+                <form method="POST" action="/seller-register" id="seller-form">
+                    <div class="auth-form__form">
+                        <div class="auth-form__group">
+                            <div class="auth-form__group-flex">
+                                <label for="role" class="auth-form__input-title">Loại Tài khoản:</label>
+                                <select name="role" id="role" class="auth-form__input-select">
+                                    <option value="seller">Người Bán</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="text" name="shopName" id="shopName" class="auth-form__input" placeholder="Tên cửa hàng">
+                            <div class="form-message"></div>
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="text" name="shopAddress" id="shopAddress" class="auth-form__input" placeholder="Địa chỉ cửa hàng">
+                            <div class="form-message"></div>
+                        </div>
+                    </div>
+
+                    <div class="auth-form__aside">
+                        <p class="auth-form__policy-text">
+                            Bằng việc đăng ký bán hàng tại UIT - DeliveFood, bạn đã đồng ý với chúng tôi về
+                            <a href="" class="auth-form__text-link">Điều khoản dịch vụ</a> &
+                            <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
+                        </p>
+                    </div>
+
+                    <div class="auth-form__control">
+                        <button class="btn btn--normal auth-form__control-back js-back-btn" style="width: 120px; height: 35px;">THOÁT</button>
+                        <button class="btn btn--primary" style="width: 120px; height: 35px;">ĐĂNG KÝ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Shipper form -->
+        <div class="auth-form js-shipper-form">
+            <div class="auth-form__container">
+                <div class="auth-form__header">
+                    <h3 class="auth-form__heading">Đăng ký giao hàng</h3>
+                </div>
+
+                <form method="POST" action="/shipper-register" id="shipper-form">
+                    <div class="auth-form__form">
+                        <div class="auth-form__group">
+                            <div class="auth-form__group-flex">
+                                <label for="role" class="auth-form__input-title">Loại Tài khoản:</label>
+                                <select name="role" id="role" class="auth-form__input-select">
+                                    <option value="shipper">Tài xế</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="text" name="shipperName" id="shipperName" class="auth-form__input" placeholder="Tên tài xế">
+                            <div class="form-message"></div>
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="text" name="shipperAddress" id="shipperAddress" class="auth-form__input" placeholder="Địa chỉ của tài xế">
+                            <div class="form-message"></div>
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="text" name="shipperTypeMotor" id="shipperTypeMotor" class="auth-form__input" placeholder="Loại xe">
+                            <div class="form-message"></div>
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="text" name="shipperLicensePlates" id="shipperLicensePlates" class="auth-form__input" placeholder="Biển số xe">
+                            <div class="form-message"></div>
+                        </div>
+                        {{!-- <div class="auth-form__group">
+                            <input type="text" name="shipperDate">
+                            <div class="form-message"></div>
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="text" name="totalOrderReceived" value="0">
+                            <div class="form-message"></div>
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="text" name="totalOrderDelivered">
+                            <div class="form-message"></div>
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="text" name="totalRevenue">
+                            <div class="form-message"></div>
+                        </div> --}}
+                    </div>
+
+                    <div class="auth-form__aside">
+                        <p class="auth-form__policy-text">
+                            Bằng việc đăng ký giao hàng tại UIT - DeliveFood, bạn đã đồng ý với chúng tôi về
+                            <a href="" class="auth-form__text-link">Điều khoản dịch vụ</a> &
+                            <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
+                        </p>
+                    </div>
+
+                    <div class="auth-form__control">
+                        <button class="btn btn--normal auth-form__control-back js-back-btn" style="width: 120px; height: 35px;">THOÁT</button>
+                        <button class="btn btn--primary" style="width: 120px; height: 35px;">ĐĂNG KÝ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Delete All Cart form -->
+        <div class="auth-form js-delete-all-cart-form">
+            <div class="auth-form__container">
+                <div class="auth-form__header" style="padding: 0;">
+                    <h3 class="auth-form__heading">Xóa giỏ hàng?</h3>
+                </div>
+                <div class="delete-all-cart__desc">Bạn có chắc chắn muốn xóa tất cả sản phẩm trong giỏ hàng này không?</div>
+
+                <div class="auth-form__control" style="margin-top: 20px">
+                    <button class="btn btn--normal auth-form__control-back js-back-btn" style="width: 120px; height: 35px;">Hủy</button>
+                    <form action="/cart/clear" method="POST">
+                        <button class="btn btn--primary" style="width: 120px; height: 35px;">Đồng ý</button>
+                    </form>
+                 </div>
+            </div>
+        </div>
+
+        <!-- Add Address form -->
+        <div class="auth-form js-add-address-form">
+            <div class="auth-form__container">
+                <div class="auth-form__header">
+                    <h3 class="auth-form__heading">Thêm địa chỉ</h3>
+                </div>
+
+                <form method="POST" action="/user/account/address/add" id="add-address-form">
+                    <div class="auth-form__form">
+                        <div class="auth-form__group"> 
+                            <input type="text" name="name" id="name" class="auth-form__input" placeholder="Tên người nhận hàng">
+                            <div class="form-message"></div>
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="text" name="phone" id="phone" class="auth-form__input" placeholder="SĐT người nhận hàng">
+                            <div class="form-message"></div>
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="text" name="address" id="address" class="auth-form__input" placeholder="Địa chỉ người nhận hàng (số nhà, phường, quận)">
+                            <div class="form-message"></div>
+                        </div>
+                    </div>
+
+                    <div class="auth-form__control">
+                        <div class="btn btn--normal auth-form__control-back js-back-btn" style="width: 120px; height: 35px;">TRỞ LẠI</div>
+                        <button class="btn btn--primary" style="width: 120px; height: 35px;">THÊM</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Delete Address form -->
+        <div class="auth-form js-delete-address-form">
+            <div class="auth-form__container">
+                <div class="auth-form__header">
+                    <h3 class="auth-form__heading">Xóa địa chỉ</h3>
+                </div>
+
+                <form method="POST" id="delete-address-form">
+                    <div class="auth-form__form">
+                        <div style="padding: 0 12px; font-size: 1.6rem">Bạn có chắc muốn xóa địa chỉ này?</div>
+                    </div>
+
+                    <div class="auth-form__control" style="margin: 20px 0 20px 0;">
+                        <div class="btn btn--primary auth-form__control-back delete-address-btn" style="width: 120px; height: 35px; background-color: red">ĐỒNG Ý</div>
+                        <div class="btn btn--normal js-back-btn" style="width: 120px; height: 35px;">TRỞ LẠI</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var btnDeleteAddress = document.querySelector('.delete-address-btn');
+    var formDeleteAddress = document.querySelector('#delete-address-form');
+
+    var btnDelete = document.querySelector('.js-delete-address-btn');
+
+    var addressID = btnDelete.getAttribute('data-id');
+    
+    btnDeleteAddress.addEventListener('click', function () {
+        formDeleteAddress.setAttribute('action', `/user/account/address/update/${addressID}?type=delete`);
+
+        formDeleteAddress.submit();
+    });
+</script>

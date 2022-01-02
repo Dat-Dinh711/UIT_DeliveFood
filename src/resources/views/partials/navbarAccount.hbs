@@ -1,0 +1,27 @@
+<div class="account__navbar">
+    <div class="account__navbar-avt">
+        <div class="account__navbar-avt-img">
+            {{#if lcAuthUser.avatar}}
+            <img src="/{{lcAuthUser.avatar}}" alt="{{lcAuthUser.userName}}">
+            {{else}}
+            <i class="fas fa-user-circle header-search__user-icon"></i>
+            {{/if}}
+        </div>
+
+        <span class="account__navbar-avt-name">{{lcAuthUser.userName}}</span>
+    </div>
+
+    <div class="account__navbar-selection">
+        <ul class="account__navbar-selection-list">
+            <li class="account__navbar-selection-item {{isProfileClicked}}">
+                <a href="/user/account/profile" class="account__navbar-link {{isProfileClicked}}">Thông tin tài khoản</a>
+            </li>
+            <li class="account__navbar-selection-item {{isAddressClicked}}">
+                <a href="/user/account/address" class="account__navbar-link {{isAddressClicked}}">Địa chỉ</a>
+            </li>
+            <li class="account__navbar-selection-item {{isPasswordClicked}}">
+                <a href="/user/account/password" class="account__navbar-link {{isPasswordClicked}}">Đổi Mật khẩu</a>
+            </li>
+        </ul>
+    </div>
+</div>

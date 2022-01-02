@@ -1,0 +1,73 @@
+<div class="order-detail">
+    <div class="order-detail__info">
+        <div class="order-detail__info-content">
+            <div class="order-detail__info-title">Địa chỉ lấy hàng</div>
+
+            <div class="order-detail__info-contract">
+                <div class="order-detail__info-contract-name">{{order.shopName}}</div>
+                <div class="order-detail-info-contract-address">
+                    <label for="">Địa chỉ:</label>
+                    <span>{{order.shopAddress}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-detail__info-content">
+            <div class="order-detail__info-title">Địa chỉ nhận hàng</div>
+
+            <div class="order-detail__info-contract">
+                <div class="order-detail__info-contract-name">{{order.name}}</div>
+                <div class="order-detail-info-contract-address">
+                    <label for="">Địa chỉ:</label>
+                    <span>{{order.address}}</span>
+                </div>
+                <div class="order-detail-info-contract-phone">
+                    <label for="">Số điện thoại:</label>
+                    <span>{{order.phone}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-detail__info-content">
+            <div class="order-detail__info-title">Hình thức thanh toán</div>
+
+            <div class="order-detail__info-contract">
+                <div>{{method}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="order-detail__product">
+        <div class="order-detail__product-title">
+            <div>Sản phẩm</div>
+            <div>Giá</div>
+            <div>Số lượng</div>
+            <div>Tạm tính</div>
+        </div>
+
+        <div class="order-detail__product-list">
+            {{#orderDetailSellerView cart=order.cart}}{{/orderDetailSellerView}}
+        </div>
+
+        <div class="order-detail__product-price">
+            <div>
+                <span>Tổng tiền hàng:</span>
+                <span>{{discount order.totalPrice 0}}</span>
+            </div>
+
+            <div>
+                <span>Phí vận chuyển:</span>
+                <span>{{discount order.shippingFee 0}}</span>
+            </div>
+
+            <div>
+                <span>Tổng cộng:</span>
+                <span>{{#sumPrice order.totalPrice order.shippingFee}}{{/sumPrice}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="order-detail__control">
+        {{#orderReceivedDetailShipperView status=order.status id=order._id shippingFee=order.shippingFee}}{{/orderReceivedDetailShipperView}}
+    </div>
+</div>

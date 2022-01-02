@@ -1,0 +1,46 @@
+<div class="navbar__seller">
+    <div class="navbar__seller-content">
+        <a href="/">
+            <img src="/img/Logo.png" alt="" class="navbar__seller-img">
+        </a>
+
+        <a href="/seller/account" class="navbar__seller-shop-info">
+            {{#if lcAuthUser.shopAvatar}}
+            <img src="/{{lcAuthUser.shopAvatar}}" alt="" class="navbar__seller-shop-info-img">
+            {{else}}
+            <div class="avatar-placeholder ">
+                <i class="fas fa-user " style="font-size: 30px; font-weight: 300; color: #B5B5B5;"></i>
+            </div>
+            {{/if}}
+            <span class="navbar__seller-shop-info-name">{{lcAuthUser.shopName}}</span>
+        </a>
+
+        <div class="navbar__seller-category">
+            <ul class="navbar__seller-category-list">
+                <li class="navbar__seller-category-item {{isClickedOverview}}">
+                    <i class="fas fa-chart-pie navbar__seller-category-item-icon"></i>
+                    <a href="/seller/overview" class="navbar__seller-category-item-title">Tổng quan</a>
+                </li>
+                <li class="{{isClickedProductList}}" style="height: 50px;">
+                    <div class="navbar__seller-category-item js-category-products" style="height: 30px;">
+                        <i class="fas fa-list navbar__seller-category-item-icon"></i>
+                        <a href="/seller/product-list" class="navbar__seller-category-item-title">Danh sách sản phẩm</a>
+                    </div>
+                </li>
+                <li class="navbar__seller-category-item js-order {{isClickedDeliveryManager}}">
+                    <i class="fas fa-clipboard-list navbar__seller-category-item-icon"></i>
+                    <a href="/seller/delivery-manager" class="navbar__seller-category-item-title">Quản lý đơn hàng</a>
+                </li>
+                <li class="navbar__seller-category-item js-shop">
+                    <i class="fas fa-store-alt navbar__seller-category-item-icon"></i>
+                    <a href="/shop/{{lcAuthUser.slug}}" class="navbar__seller-category-item-title">Xem shop</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="navbar__seller-out">
+        <i class="fas fa-sign-out-alt navbar__seller-out-icon"></i>
+        <a href="/" class="navbar__seller-out-title">Trở về trang chủ</a>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="navbar__seller">
+    <div class="navbar__seller-content">
+        <a href="">
+            <img src="/img/Logo.png" alt="" class="navbar__seller-img">
+        </a>
+
+        <div class="navbar__seller-shop-info">
+            <a href="/shipper/info" class="navbar__seller-shop-info-name">{{lcAuthUser.shipperName}}</a>
+        </div>
+
+        <div class="navbar__seller-category">
+            <ul class="navbar__seller-category-list">
+                <li class="navbar__seller-category-item {{isClickedOverView}}">
+                    <i class="fas fa-chart-pie navbar__seller-category-item-icon"></i>
+                    <a href="/shipper/overview" class="navbar__seller-category-item-title" style="margin-top: 7px">Tổng quan</a>
+                </li>
+                <li class="navbar__seller-category-item {{isClickedOrderList}}">
+                    <i class="fas fa-clipboard-list navbar__seller-category-item-icon"></i>
+                    <a href="/shipper/order-list" class="navbar__seller-category-item-title" style="margin-top: 7px">Đơn hàng</a> 
+                </li>
+                <li class="navbar__seller-category-products {{isClickedOrderReceived}}" style="height: 50px;">
+                    <div class="js-category-products navbar__seller-category-item" style="height: 30px;">
+                        <i class="fas fa-check-circle navbar__seller-category-item-icon"></i>
+                        <a href="/shipper/order-received" class="navbar__seller-category-item-title" style="margin-top: 7px">Đơn hàng đã nhận</a>
+                    </div>
+                    <ul class="navbar__seller-category-products-list">
+                        <li class="navbar__seller-category-products-item" style="height: 29px">Chưa giao</li>
+                        <li class="navbar__seller-category-products-item" style="height: 29px">Hoàn thành</li>
+                        <li class="navbar__seller-category-products-item" style="height: 29px">Không giao được</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="navbar__seller-out">
+        <i class="fas fa-sign-out-alt navbar__seller-out-icon"></i>
+        <a href="/" class="navbar__seller-out-title">Trở về trang chủ</a>
+    </div>
+</div>

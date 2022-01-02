@@ -1,0 +1,118 @@
+<div class="order-detail">
+    <div class="order-detail__info">
+        <div class="order-detail__info-content">
+            <div class="order-detail__info-title">Địa chỉ người nhận</div>
+
+            <div class="order-detail__info-contract">
+                <div class="order-detail__info-contract-name">{{order.name}}</div>
+                <div class="order-detail-info-contract-address">
+                    <label for="">Địa chỉ:</label>
+                    <span>{{order.address}}</span>
+                </div>
+                <div class="order-detail-info-contract-phone">
+                    <label for="">Số điện thoại:</label>
+                    <span>{{order.phone}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-detail__info-content">
+            <div class="order-detail__info-title">Thông tin tài xế</div>
+            {{#if order.shipperName}}
+            <div class="order-detail__info-contract order-detail__info-contract-active">
+                <div class="order-detail__info-contract-name">{{order.shipperName}}</div>
+                <div class="order-detail-info-contract-address">
+                    <label for="">Địa chỉ:</label>
+                    <span>{{order.shipperAddress}}</span>
+                </div>
+                <div class="order-detail-info-contract-license-plates">
+                    <label for="">Biển số xe:</label>
+                    <span>{{order.shipperLicensePlates}}</span>
+                </div>
+                <div class="order-detail-info-contract-type-motor">
+                    <label for="">Loại xe:</label>
+                    <span>{{order.shipperTypeMotor}}</span>
+                </div>
+                <div class="order-detail-info-contract-phone">
+                    <label for="">Số điện thoại:</label>
+                    <span>{{order.shipperPhone}}</span>
+                </div>
+            </div>
+            {{else}}
+            <div class="order-detail__info-contract" style="font-size: 1.6rem; display: block">Chưa có tài xế nhận đơn hàng</div>
+            {{/if}}
+        </div>
+
+        <div class="order-detail__info-content">
+            <div class="order-detail__info-title">Hình thức thanh toán</div>
+
+            <div class="order-detail__info-contract">
+                <div>{{method}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="order-detail__product">
+        <div class="order-detail__product-title">
+            <div>Sản phẩm</div>
+            <div>Giá</div>
+            <div>Số lượng</div>
+            <div>Tạm tính</div>
+        </div>
+
+        <div class="order-detail__product-list">
+            {{#orderDetailSellerView cart=order.cart}}{{/orderDetailSellerView}}
+        </div>
+
+        <div class="order-detail__control">
+            <div class="order-detail__control-btn">
+                <form action="/seller/delivery-manager/update/{{order._id}}" method="POST">
+                {{#ifCond order.status 'confirm'}}
+                    <select name="status" id="status" class="auth-form__input-select" required>
+                        <option value="">-- Cập nhật trạng thái đơn hàng --</option>
+                        <option value="shipper">Xác nhận đơn hàng</option>
+                        <option value="cancel">Hủy đơn hàng</option>
+                    </select>
+                {{/ifCond}}
+                {{#ifCond order.status 'shipper'}}
+                    <select name="status" id="status" class="auth-form__input-select" required>
+                        <option value="">-- Cập nhật trạng thái đơn hàng --</option>
+                        <option value="cancel">Hủy đơn hàng</option>
+                    </select>
+                {{/ifCond}}
+                {{#ifCond order.status 'success-delivery'}}
+                    <select name="status" id="status" class="auth-form__input-select" required>
+                        <option value="">-- Cập nhật trạng thái đơn hàng --</option>
+                        <option value="success">Hoàn tất đơn hàng</option>
+                    </select>
+                {{/ifCond}}
+                {{#ifCond order.status 'success'}}
+                    <select name="status" id="status" class="auth-form__input-select" disabled required>
+                        <option value="">-- Cập nhật trạng thái đơn hàng --</option>
+                        <option value="shipper">Xác nhận đơn hàng</option>
+                        <option value="success">Hoàn tất đơn hàng</option>
+                        <option value="cancel">Hủy đơn hàng</option>
+                    </select>
+                {{/ifCond}}
+                {{#ifCond order.status 'cancel'}}
+                    <select name="status" id="status" class="auth-form__input-select" disabled required>
+                        <option value="">-- Cập nhật trạng thái đơn hàng --</option>
+                        <option value="shipper">Xác nhận đơn hàng</option>
+                        <option value="success">Hoàn tất đơn hàng</option>
+                        <option value="cancel">Hủy đơn hàng</option>
+                    </select>
+                {{/ifCond}}
+                    <input type="text" name="quantity" value={{order.quantity}}  style="display: none;">
+                    <input type="text" name="price" value={{order.totalPrice}}  style="display: none;">
+                    <button class="primary-button btn-update-status">Lưu lại</button>
+                </form>
+            </div>
+            <div class="order-detail__product-price">
+                <div>
+                    <span>Tổng tiền hàng:</span>
+                    <span>{{discount order.totalPrice 0}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

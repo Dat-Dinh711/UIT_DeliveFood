@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{> title}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/order.css">
+    <link rel="stylesheet" href="/css/{{> css}}">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="shortcut icon" href="/img/Logo_Website.png" type="image/x-icon">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v11.0&appId=359469145803979&autoLogAppEvents=1" nonce="OW3DDN5L"></script>
+    <meta name="google-signin-client_id" content="692753406462-udjs52qov2mop6fr1hb6b366tnqdivat.apps.googleusercontent.com">
+</head>
+<body>
+    <div class="app">
+        <div id="toast"></div>
+        {{> header}}
+
+        <div class="container">
+            <div class="container-content">
+                <div class="grid">
+                    {{> purchaseNavbar}}
+                    {{{body}}}
+                </div>
+            </div>
+        </div>
+
+        {{> footer}}
+
+        {{> modal}}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="/js/base.js"></script>
+        <script src="{{> js}}"></script>
+        <script src="/js/validator.js"></script>
+        <script src="/js/validateExec.js"></script>
+
+        <script src="/js/user/toastMessage.js"></script>
+        <script src="/js/pagination.js"></script>
+        <script>
+            {{#switch messageUser.length}}
+                {{#case 1}} showSuccessPayToast() {{/case}}
+            {{/switch}}
+        </script>
+    </div>
+</body>
+</html>

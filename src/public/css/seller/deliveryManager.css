@@ -1,0 +1,95 @@
+:root {
+  --primary-color: #8ABF44;
+  --primary-color-hover: #668a36;
+  --text-color: #828282;
+  --white-color: #fff;
+  --black-color: #000;
+  --product-name-color: #6A8491;
+  --product-border: #E9E9E9;
+  --header-height: 157px;
+  --search-height: 100px;
+  --navbar-height: 50px;
+  --banner-height: 564px;
+  --footer-height: 260px;
+  --product-width: 250px;
+  --product-height: 325px; }
+
+.header-search__btn.order__search {
+  margin: 20px 0 0 20px;
+  background-color: #fafafa; }
+
+.header-search__btn-input {
+  background-color: #fafafa; }
+
+.product-list__add-btn {
+  padding: 0 20px;
+  margin: 18px 20px 0 0; }
+
+/* list */
+.delivery__product {
+  border: 1px solid var(--product-border);
+  border-radius: 10px;
+  margin: 20px 20px; }
+
+.delivery__product-title {
+  height: 12%;
+  display: flex;
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 15px 15px;
+  margin: 0 15px;
+  border-bottom: 2px solid var(--primary-color); }
+
+.delivery__product-title div {
+  width: 17%; }
+
+.delivery__product-title div:nth-child(1),
+.delivery__item li:nth-child(1) {
+  width: 20%; }
+
+.delivery__product-title div:nth-child(2) {
+  width: 24%; }
+
+.delivery__product-title div:nth-child(3) {
+  width: 24%;
+  padding-left: 5px; }
+
+.delivery__product-title div:nth-child(4),
+.delivery__item li:nth-child(4) {
+  width: 24%; }
+
+.delivery__product-title div:nth-child(5) {
+  padding-left: 10px; }
+
+.delivery__list {
+  height: 465px;
+  font-size: 1.4rem;
+  overflow-y: auto; }
+
+.delivery__list ul:nth-last-child(1) {
+  border-bottom: none; }
+
+.delivery__item-link {
+  text-decoration: none;
+  color: black; }
+
+.delivery__item-link:hover {
+  color: black; }
+
+.delivery__item {
+  display: flex;
+  padding: 15px 15px;
+  list-style: none;
+  margin: 0 0 0 15px;
+  border-bottom: 1px solid var(--product-border);
+  cursor: pointer; }
+
+.delivery__item:hover {
+  background-color: #fefefe; }
+
+.delivery__item li {
+  width: 17%; }
+
+.delivery__item li:nth-child(2),
+.delivery__item li:nth-child(3) {
+  width: 24%; }

@@ -1,0 +1,223 @@
+@import './variables';
+
+/* container */
+
+.container__post {
+    padding: 0 100px 0 100px;
+    margin: 50px 0;
+    background-color: var(--white-color);
+}
+
+.container__post-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    padding: 30px 0 15px 0;
+}
+
+.container__post-author {
+    font-size: 1.6rem;
+    color: var(--product-name-color);
+}
+
+.container__post-seperate {
+    display: block;
+    height: 1px;
+    background-color: rgba(138, 191, 68, 0.4);
+    margin: 20px 0 30px 0;
+}
+
+.container__content-intro {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    margin: 10px 0 10px 0;
+}
+
+.container__content-picture {
+    margin: 20px 0 20px 0;
+}
+
+.container__content-img {
+    display: block;
+    width: 60%;
+    margin: auto;
+    border-radius: 3px;
+}
+
+.container__content-material {
+    line-height: 22px;
+    margin: 10px 0 30px 0;
+}
+
+.container__content-material-title {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.container__content-material-list {
+    font-size: 1.6rem;
+}
+
+.container__content-material-list li {
+    height: 40px;
+}
+
+.container__content-making {
+    font-size: 1.4rem;
+    line-height: 18px;
+    padding: 10px 0 10px 0;
+}
+
+.container__content-making-list {
+    font-size: 1.6rem;
+}
+
+.container__content-making-list li {
+    margin-bottom: 20px;
+    line-height: 2.2rem;
+}
+
+.container__content-making-list li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* comment */
+
+.container__comment {
+    background-color: var(--white-color);
+    padding: 25px 50px;
+    margin: 50px 0;
+}
+
+.container__comment div:nth-child(2) .line-block {
+    display: none;
+}
+
+.container__comment-title {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.line-title {
+    width: 100px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin-top: 4px;
+}
+
+.line-block {
+    width: 100%;
+    height: 1px;
+    background-color: var(--text-color);
+}
+
+.container__product-reviews-rating__list {
+    margin-top: 20px;
+}
+
+.avatar-customer {
+    margin-top: 15px;
+    margin-left: 15px;
+    width: 100%;
+    display: flex;
+}
+
+.avatar-customer .block-avt {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    position: relative;
+}
+
+.avatar-customer .avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+}
+
+.avatar-customer .avatar-placeholder {
+    width: 50px;
+    height: 50px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    border: 1px solid #C4C4C4;
+}
+
+.block-avt-next {
+    margin: 4px 15px;
+}
+
+.username {
+    color: var(--text-color);
+    font-size: 1.4rem;
+    text-decoration: none;
+}
+
+.date-order {
+    color: #C4C4C4;
+    font-size: 1.2rem;
+}
+
+.content-comment {
+    color: #303030;
+    font-size: 1.4rem;
+    margin: 15px 0px;
+}
+
+.rating-action--like-btn {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    cursor: pointer;
+    margin-top: 8px;
+    margin-right: 8px;
+}
+
+.rating-action--like-count {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-top: 8px;
+}
+
+.comment-form {
+    margin-top: 15px;
+    margin-left: 15px;
+    width: 100%;
+}
+
+.review {
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.review-text {
+    width: 70%;
+    height: 50px;
+    font-size: 1.4rem;
+    border-radius: 10px;
+    padding: 5px;
+    outline: none;
+    border: 1px solid var(--text-color);
+}
+
+.review-text:focus {
+    border: 1px solid var(--primary-color);
+}
+
+.review-btn {
+    width: 100px;
+    margin-left: 20px;
+    padding: 0;
+}
+
+.container__product-recipe-comment {
+    margin-bottom: 50px;
+}

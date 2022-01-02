@@ -1,0 +1,137 @@
+<div class="account__content">
+    <form action="/user/account/profile/update" method="POST" id="account-profile" enctype="multipart/form-data">
+        <div class="account__content-warpp">
+            <div class="account-content-profile">
+                <div class="account__content-title">Thông tin tài khoản</div>
+
+                <div class="account__content-info">
+                    <div class="account__content-info-title">
+                            <div class="account__content-info-title-item">Tên Đăng Nhập</div>
+                            <div class="account__content-info-title-item">Tên</div>
+                            <div class="account__content-info-title-item">SĐT</div>
+                            <div class="account__content-info-title-item">Giới tính</div>
+                            <div class="account__content-info-title-item">Ngày sinh</div>
+                    </div>
+
+                    <div class="account__content-info-content">
+                        <div class="account__content-info-content-sdt-email">
+                            <input type="text" name="userName" value="{{user.userName}}">
+                        </div>  
+
+                        <div class="account__content-info-content-sdt-email">
+                            <input type="text" name="name" value="{{user.name}}">
+                        </div>
+
+                        <div class="account__content-info-content-sdt-email auth-form__group">
+                            <input type="text" name="phone" id="phone" value="{{user.phone}}">
+                            <div class="form-message"></div>
+                        </div>
+                        {{#ifCond user.gender 'male'}}
+                        <div class="account__content-info-content-gender">
+                            <div>
+                                <input type="radio" name="gender" id="male" value="male" checked>
+                                <label for="male">Nam</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="gender" id="female" value="female">
+                                <label for="female">Nữ</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="gender" id="other" value="other">
+                                <label for="other">Khác</label>
+                            </div>
+                        </div>
+                        {{/ifCond}}
+                        {{#ifCond user.gender 'female'}}
+                        <div class="account__content-info-content-gender">
+                            <div>
+                                <input type="radio" name="gender" id="male" value="male">
+                                <label for="male">Nam</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="gender" id="female" value="female" checked>
+                                <label for="female">Nữ</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="gender" id="other" value="other">
+                                <label for="other">Khác</label>
+                            </div>
+                        </div>
+                        {{/ifCond}}
+                        {{#ifCond user.gender 'other'}}
+                        <div class="account__content-info-content-gender">
+                            <div>
+                                <input type="radio" name="gender" id="male" value="male">
+                                <label for="male">Nam</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="gender" id="female" value="female">
+                                <label for="female">Nữ</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="gender" id="other" value="other" checked>
+                                <label for="other">Khác</label>
+                            </div>
+                        </div>
+                        {{/ifCond}}
+                        {{#ifNot user.gender}}
+                        <div class="account__content-info-content-gender">
+                            <div>
+                                <input type="radio" name="gender" id="male" value="male">
+                                <label for="male">Nam</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="gender" id="female" value="female">
+                                <label for="female">Nữ</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="gender" id="other" value="other">
+                                <label for="other">Khác</label>
+                            </div>
+                        </div>
+                        {{/ifNot}}
+
+                        <div class="account__content-info-content-sdt-email">
+                            <input type="text" name="date" value="{{user.date}}" placeholder="dd/mm/yyyy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="account__profile-avt">
+                <label class="account__profile-avt-img">
+                    {{#if user.avatar}}
+                    <img src="/{{user.avatar}}" alt="Avatar" id="image-file-upload">
+                    {{else}}
+                    <img src="/img/user.png" alt="Avatar" id="image-file-upload">
+                    {{/if}}
+
+                    <label class="account__navbar-avt-icon"> 
+                        <input type="file" name="avatar" accept=".jpg,.jpeg,.png" id="file-upload" onchange="chooseFile(this)" multiple="multiple" value="{{user.avatar}}">
+                        <i class="fas fa-camera"></i>
+                    </label>
+                </label>
+
+                <span class="account__navbar-avt-name">{{user.userName}}</span>
+
+                <span class="account__profile-img-notice">Dụng lượng file tối đa 1 MB<br>Định dạng:.JPEG, .PNG</span>
+            </div>
+        </div>
+        <div class="account__content-control">
+            <button class="btn btn--primary account__content-control-btn">Lưu lại</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function chooseFile(fileInput) {
+        if(fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+
+            reader.addEventListener('load', function(event) {
+                document.querySelector('#image-file-upload').setAttribute('src', event.target.result);
+            });
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+</script>

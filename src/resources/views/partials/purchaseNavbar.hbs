@@ -1,0 +1,39 @@
+<div class="order-all__navbar">
+    <ul class="order-all__navbar-list">
+        <li class="order-all__navbar-item">
+            <a class="order-link {{allActive}}" href="/user/purchase?status=all">
+                Tất cả
+            </a>
+        </li>
+        <li class="order-all__navbar-item">
+            <a class="order-link {{confirmActive}}" href="/user/purchase?status=confirm">
+                Chờ xác nhận
+            </a>
+        </li>
+        <li class="order-all__navbar-item">
+            <a class="order-link {{shipperActive}}" href="/user/purchase?status=shipper">
+                Chờ tài xế
+            </a>
+        </li>
+        <li class="order-all__navbar-item">
+            <a class="order-link {{deliveringActive}}" href="/user/purchase?status=delivering">
+                Đang giao
+            </a>
+        </li>
+        <li class="order-all__navbar-item">
+            <a class="order-link {{successActive}}" href="/user/purchase?status=success">
+                Đã giao
+            </a>
+        </li>
+        <li class="order-all__navbar-item">
+            <a class="order-link {{cancelActive}}" href="/user/purchase?status=cancel">
+                Đã hủy
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="order-all__search">
+    <i class="fas fa-search order-all__search-icon"></i>
+    <input type="text" placeholder="Tìm kiếm theo tên Shop, ID đơn hàng hoặc Tên sản phẩm" class="order-all__search-icon-input">
+</div>

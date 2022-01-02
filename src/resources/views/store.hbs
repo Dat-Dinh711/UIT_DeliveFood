@@ -1,0 +1,115 @@
+<div class="grid">
+    <div class="container__content">
+        <div class="shop-info">
+            <div class="grid__column-5 avatar-shop">
+                <a href="/ " style="width: 80px; height: 80px; ">
+                    <div class="block-avt ">
+                        {{#if user.shopAvatar}}
+                        <img src="/{{user.shopAvatar}}" alt=" " class="avatar-img ">
+                        {{else}}
+                        <div class="avatar-placeholder ">
+                            <i class="fas fa-user " style="font-size: 30px; font-weight: 300; color: #B5B5B5; position: absolute; left: 35%; top:30% "></i>
+                        </div>
+                        {{/if}}
+                    </div>
+                </a>
+                <div class="block-avt-next">
+                    <div class="username">{{user.shopName}}</div>
+                </div>
+            </div>
+            <div class="grid__2column-2 info">
+                <div class="info-reply-chat" style="margin: 10px 0px;">
+                    <i class="far fa-comment-dots"></i>
+                    <label for="reply-chat" class="label-info">Tỉ lệ phản hồi chat</label>
+                    <span id="reply-chat" class="info">100% (Trong vài phút)</span>
+                </div>
+                <div class="info-product">
+                    <i class="fas fa-store"></i>
+                    <label for="soluongsp" class="label-info">Sản phẩm</label>
+                    <span id="soluongsp" class="info">{{user.totalProduct}}</span>
+                </div>
+            </div>
+            <div class="grid__2column-2 info">
+                <div class="info-review" style="margin: 10px 0px;">
+                    <i class="far fa-star"></i>
+                    <label for="reply-chat" class="label-info">Đánh giá</label>
+                    <span id="reply-chat" class="info">239</span>
+                </div>
+                <div class="info-followers">
+                    <i class="fas fa-user-check"></i>
+                    <label for="followers" class="label-info">Người theo dõi</label>
+                    <span id="followers" class="info">180</span>
+                </div>
+            </div>
+        </div>
+
+        {{!-- <button class="contact-shop">
+            <i class="fas fa-comment-dots"></i>
+            Liên hệ cửa hàng
+        </button> --}}
+        <div class="content-product">
+            <div class="grid__column-5 catalog">
+                <div>
+                    <a href="/shop/{{user.slug}}" class="catalog-link">Tất cả</a>
+                </div>
+                <div>
+                    <a href="?type=onsale" class="catalog-link">Khuyến mãi</a>
+                </div>
+                {{#each category}}
+                <div>
+                    <a href="?type={{this}}" class="catalog-link">{{this}}</a>
+                </div>
+                {{/each}}
+            </div>
+
+            <div class="grid__4column-5">
+                <div class="content-list-product">
+                    <div class="title-list-product">{{isClicked}}</div>
+                    <div class="all-items">
+                        <div class="grid__row">
+                            {{#each products}}
+                            <div class="grid__column-5">
+                                <div class="container__products-item container__products-onsale">
+                                    {{!-- <div class="container__products-new">
+                                        <span>NEW</span>
+                                    </div> --}}
+                                    {{#if this.onSale}}
+                                    <div class="container__products-sale">
+                                        <span>ON SALE</span>
+                                    </div>
+                                    {{/if}}
+                                    <form action="/add-to-cart/{{this._id}}" method="POST">
+                                        <button class="container__products-cart">
+                                            <i class="fas fa-shopping-cart container__products-cart-icon"></i>
+                                        </button>
+                                    </form>
+                                    <a href="/product-list/{{this.slug}}">
+                                        <img src="/{{this.image}}" alt="{{this.productName}}" class="container__products-img">
+                                    </a>
+                                    <div class="container__products-rating">
+                                        {{#RatingReviewProductDetailView rating=this.rating}}{{/RatingReviewProductDetailView}}
+                                    </div>
+                                    <div class="container__products-info">
+                                        <a href="/product-list/{{this.slug}}" class="container__products-name">{{this.productName}}</a>
+                                        {{#if this.onSale}}
+                                        <div class="container__products-price">{{discount this.price this.discount}}</div>
+                                        {{else}}
+                                        <div class="container__products-price">{{discount this.price 0}}</div>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}} 
+                        </div>
+                    </div>
+                    <!-- Pagination Layout -->
+                    <div class="pagination">
+                        <ul class="product__pagination">
+                            {{#paginate titleProduct=titleProduct key=key page=page totalPage=totalPage}}{{/paginate}}
+                        </ul>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

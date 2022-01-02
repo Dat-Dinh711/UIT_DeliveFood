@@ -1,0 +1,56 @@
+<div class="overview">
+    <div class="overview__info">
+        <div class="overview__info-content">
+            <div class="overview__info-title-items">Hoạt động</div>
+
+            <div class="overview__info-contract">
+                <div class="overview__info-contract-soluong">
+                    <label >Số đơn hàng đã nhận</label>
+                    <span>{{user.totalOrderReceived}}</span>                                
+                </div>
+                <div class="overview__info-contract-soluong">
+                    <label for="">Số đơn hàng đã giao thành công</label>
+                    <span>{{user.totalOrderDelivered}}</span>
+                </div>
+                <div class="overview__info-contract-soluong">
+                    <label for="">Số đơn hàng không giao được</label>
+                    <span>{{user.totalOrderCancel}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="overview__info-content">
+            <div class="overview__info-title-items">Doanh thu</div>
+
+            <div class="overview__info-contract">
+                <div class="overview__info-contract-soluong">
+                    <label >Tổng doanh thu</label>
+                    <span>{{discount user.totalRevenue 0}}</span>                                
+                </div>
+                <div class="overview__info-contract-soluong">
+                    <label >Mức tăng trưởng</label>
+                    <span id="muctangtruong">10%</span>                                
+                </div>
+            </div>
+        </div>
+
+        <div class="overview__info-content">
+            <div class="overview__info-title-items">Top cửa hàng nhận đơn giao nhiều nhất</div>
+
+            <div class="overview__info-contract">
+                <div class="overview__info-contract-soluong">
+                    <label >Rau Củ Đà Lạt</label>
+                    <span>110</span>                                
+                </div>
+                <div class="overview__info-contract-soluong">
+                    <label for="">3 Sạch Food</label>
+                    <span>50</span>
+                </div>
+                <div class="overview__info-contract-soluong">
+                    <label for="">OGANICA Food</label>
+                    <span>40</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

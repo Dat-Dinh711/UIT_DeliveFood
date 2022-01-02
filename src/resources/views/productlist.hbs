@@ -1,0 +1,146 @@
+<div class="grid">
+    <div class="container-content">
+        {{#if category}}
+        <div class="container__products-list-banner">
+            <div class="container__products-list-banner-text">{{key}}</div>
+            <img src="/img/Product List/{{key}}_Banner.jpg" alt="" class="container__products-list-banner-img">
+        </div>
+        {{/if}}
+
+        {{#if search}}
+        <div class="container__products-list-key-search">
+            <span>Kết quả tìm kiếm cho từ khoá: </span>
+            <span>{{key}}</span>
+            <span>({{total}} sản phẩm)</span>
+        </div>
+        {{/if}}
+
+        <div class="container__products-list">
+            {{#if products}}
+            <div class="grid__row content-product">
+                {{#each products}}
+                <div class="grid__row-4-column">
+                    <div class="container__products-item container__products-onsale">
+                        {{#if this.onSale}}
+                        <div class="container__products-sale">
+                            <span>ON SALE</span>
+                        </div>
+                        {{/if}}
+                        <form action="/add-to-cart/{{this._id}}" method="POST">
+                            <button class="container__products-cart">
+                                <i class="fas fa-shopping-cart container__products-cart-icon"></i>
+                            </button>
+                        </form>
+                        <a href="/product-list/{{this.slug}}">
+                            <img src="/{{this.image}}" alt="{{this.productName}}" class="container__products-img">
+                        </a>
+                        <div class="container__products-rating">
+                            {{#RatingReviewProductDetailView rating=this.rating}}{{/RatingReviewProductDetailView}}
+                        </div>
+                        <div class="container__products-info">
+                            <a href="/product-list/{{this.slug}}" class="container__products-name">{{this.productName}}</a>
+                            {{#if this.onSale}}
+                            <div class="container__products-price">{{discount this.price this.discount}}</div>
+                            {{else}}
+                            <div class="container__products-price">{{discount this.price 0}}</div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            {{else}}
+            <div class="no-search-product">
+                <img src="/img/Cart/No_Search.png" alt="">
+                <span>Không tìm thấy kết quả nào</span>
+            </div>
+            {{/if}}
+        </div>
+
+        <!-- Pagination Layout -->
+        <div class="pagination">
+            <ul class="product__pagination">
+                {{#paginate titleProduct=titleProduct key=key page=page totalPage=totalPage}}{{/paginate}}
+            </ul>
+        </div>
+
+        <!-- Recently Viewed -->
+        {{!-- <div class="container__recently-viewed">
+            <span class="container__recently-viewed-title">Sản Phẩm Vừa Xem</span>
+
+            <div class="grid__row">
+                <div class="grid__column-6">
+                    <div class="container__recently-viewed-item">
+                        <a href="">
+                            <img src="img/Product/Bông cải xanh.jpg" alt="" class="container__recently-viewed-img">
+                        </a>
+                        <div class="container__products-info">
+                            <a href="" class="container__recently-viewed-name">Bông cải xanh</a>
+                            <div class="container__recently-viewed-price">32.000 VND</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid__column-6">
+                    <div class="container__recently-viewed-item">
+                        <a href="">
+                            <img src="img/Product/Bông cải xanh.jpg" alt="" class="container__recently-viewed-img">
+                        </a>
+                        <div class="container__products-info">
+                            <a href="" class="container__recently-viewed-name">Bông cải xanh</a>
+                            <div class="container__recently-viewed-price">32.000 VND</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid__column-6">
+                    <div class="container__recently-viewed-item">
+                        <a href="">
+                            <img src="img/Product/Bông cải xanh.jpg" alt="" class="container__recently-viewed-img">
+                        </a>
+                        <div class="container__products-info">
+                            <a href="" class="container__recently-viewed-name">Bông cải xanh</a>
+                            <div class="container__recently-viewed-price">32.000 VND</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid__column-6">
+                    <div class="container__recently-viewed-item">
+                        <a href="">
+                            <img src="img/Product/Bông cải xanh.jpg" alt="" class="container__recently-viewed-img">
+                        </a>
+                        <div class="container__products-info">
+                            <a href="" class="container__recently-viewed-name">Bông cải xanh</a>
+                            <div class="container__recently-viewed-price">32.000 VND</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid__column-6">
+                    <div class="container__recently-viewed-item">
+                        <a href="">
+                            <img src="img/Product/Bông cải xanh.jpg" alt="" class="container__recently-viewed-img">
+                        </a>
+                        <div class="container__products-info">
+                            <a href="" class="container__recently-viewed-name">Bông cải xanh</a>
+                            <div class="container__recently-viewed-price">32.000 VND</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid__column-6">
+                    <div class="container__recently-viewed-item">
+                        <a href="">
+                            <img src="img/Product/Bông cải xanh.jpg" alt="" class="container__recently-viewed-img">
+                        </a>
+                        <div class="container__products-info">
+                            <a href="" class="container__recently-viewed-name">Bông cải xanh</a>
+                            <div class="container__recently-viewed-price">32.000 VND</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+</div>
+</div>

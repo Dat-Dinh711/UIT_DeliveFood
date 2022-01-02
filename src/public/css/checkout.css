@@ -1,0 +1,307 @@
+:root {
+  --primary-color: #8ABF44;
+  --primary-color-hover: #668a36;
+  --text-color: #828282;
+  --white-color: #fff;
+  --black-color: #000;
+  --product-name-color: #6A8491;
+  --product-border: #E9E9E9;
+  --header-height: 157px;
+  --search-height: 100px;
+  --navbar-height: 50px;
+  --banner-height: 564px;
+  --footer-height: 260px;
+  --product-width: 250px;
+  --product-height: 325px; }
+
+.container__address-delivery {
+  width: 100%;
+  height: 100%;
+  background: #fefefe;
+  padding: 32px;
+  border: 8px; }
+
+.line-block-horizontal {
+  width: 2px;
+  height: 60px;
+  background: var(--primary-color); }
+
+.title-payment {
+  color: var(--primary-color);
+  font-size: 2.4rem;
+  font-weight: 500;
+  margin: 0 32px;
+  display: flex;
+  width: 615px; }
+
+.container__title {
+  color: var(--primary-color);
+  font-size: 2.2rem;
+  font-weight: 500; }
+
+.container__address-delivery-info {
+  margin: 15px 0;
+  font-size: 1.4rem;
+  line-height: 2; }
+
+.container__address-delivery-info.close {
+  display: none; }
+
+.container__address-delivery-info .info-name {
+  font-weight: 700; }
+
+.container__address-delivery-info .edit {
+  color: var(--primary-color);
+  cursor: pointer; }
+
+.js-change-address-div {
+  display: none; }
+
+.js-change-address-div.open {
+  display: block; }
+
+.container__address-delivery-select {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px; }
+
+.container__address-delivery-select div {
+  margin-left: 10px;
+  display: flex;
+  font-size: 1.6rem; }
+
+.container__address-delivery-select div div:first-child {
+  font-weight: 600;
+  margin-right: 10px; }
+
+.container__address-delivery-control {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 30px; }
+
+.container__address-delivery-control button {
+  margin-right: 20px; }
+
+.add-address-link {
+  text-decoration: none;
+  color: var(--primary-color); }
+
+.container__product-bill {
+  width: 100%;
+  height: 100%;
+  background: #fefefe;
+  padding: 32px;
+  border: 8px;
+  margin-top: 24px; }
+
+.container__product-bill-title {
+  display: flex;
+  font-size: 1.6rem;
+  justify-content: flex-end;
+  margin-right: 40px;
+  margin-top: 15px;
+  margin-bottom: 15px; }
+
+.container__product-bill-title div {
+  width: 12%; }
+
+.container__product-bill-item {
+  display: flex;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  align-items: center; }
+
+.container__product-bill-item .product-img {
+  width: 10%;
+  height: 80px; }
+
+.container__product-bill-item .tensanpham {
+  font-size: 1.4rem; }
+
+.container__product-bill-item .phanloai {
+  font-size: 1.2rem;
+  color: #c4c4c4; }
+
+.giathanhtoan {
+  display: flex;
+  gap: 100px;
+  font-size: 1.6rem;
+  justify-content: flex-end;
+  margin-right: 200px;
+  margin-top: 15px; }
+
+.container__product-bill-item .dongia {
+  display: flex;
+  font-size: 1.4rem;
+  width: 10%;
+  color: var(--primary-color); }
+
+.container__product-bill-item .soluong {
+  display: flex;
+  justify-content: center;
+  font-size: 1.4rem;
+  width: 10%; }
+
+.container__product-bill-item .thanhtien {
+  display: flex;
+  font-size: 1.4rem;
+  color: var(--primary-color);
+  justify-content: flex-end;
+  width: 10%; }
+
+.line-block {
+  width: 100%;
+  height: 1px;
+  background-color: #C4C4C4; }
+
+.container__payment {
+  width: 100%;
+  height: 100%;
+  background: #fefefe;
+  padding: 32px;
+  border: 8px;
+  margin-top: 24px; }
+
+.container__payment-method {
+  display: flex;
+  margin: 24px 0; }
+
+.type-item-default {
+  width: auto;
+  height: 32px;
+  margin: 0 10px 0 0;
+  padding: 5px 15px;
+  background: none;
+  border: 0.5px solid #C4C4C4;
+  position: relative;
+  text-align: center;
+  font-size: 1.4rem;
+  cursor: pointer; }
+
+.type-item-active,
+.type-item-default:hover {
+  border: 1px solid var(--primary-color); }
+
+.type-item-active-tick-delivery,
+.type-item-active-tick-cart,
+.type-item-active-tick-paypal {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-top: 16px solid var(--primary-color);
+  display: none; }
+
+.type-item-active-tick-delivery.open,
+.type-item-active-tick-cart.open,
+.type-item-active-tick-paypal.open {
+  display: block; }
+
+.fa-check {
+  position: relative;
+  left: -8px;
+  bottom: 21px;
+  font-size: .8rem;
+  color: #fefefe; }
+
+.text-ship-cod {
+  font-size: 1.4rem;
+  color: #c4c4c4; }
+
+.container__payment-total {
+  position: relative;
+  width: 100%; }
+
+.container__payment-total-cart {
+  width: 100%;
+  display: none; }
+
+.container__payment-total-cart.open {
+  display: block; }
+
+.auth-form__input {
+  width: 50%; }
+
+.container__payment-total-delivery {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  height: 100px;
+  position: absolute;
+  right: 0;
+  bottom: 0; }
+
+.container__payment-total-delivery-title {
+  margin-right: 10px;
+  height: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column; }
+
+.container__payment-total-delivery-title div {
+  height: 33.333%; }
+
+.container__payment-total-delivery-price {
+  text-align: right;
+  height: 100%;
+  display: flex;
+  flex-direction: column; }
+
+.container__payment-total-delivery-price div {
+  height: 33.333%; }
+
+.tong {
+  font-size: 14px; }
+
+.tien {
+  color: var(--primary-color); }
+
+.primary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.container__title-icon {
+  color: var(--primary);
+  font-size: 1.6rem;
+  padding-right: 4px; }
+
+.container__address-delivery-info-address {
+  display: flex;
+  gap: 30px; }
+
+.container__product-bill-item-product-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+  width: 50%; }
+
+.line-block-dash {
+  margin: 40px 0 15px;
+  border: 1px dashed #E3E1E1; }
+
+.btn-order,
+.btn-order-paypal {
+  display: flex;
+  justify-content: flex-end; }
+
+.btn-order.close,
+.btn-order-paypal.close {
+  display: none; }
+
+.btn-order-form {
+  display: flex;
+  justify-content: flex-end; }
+
+.primary-button {
+  width: 140px; }
+
+.checkout-shipping-notify.close {
+  display: none; }
+
+.normal-checkout-shipping.close {
+  display: none; }

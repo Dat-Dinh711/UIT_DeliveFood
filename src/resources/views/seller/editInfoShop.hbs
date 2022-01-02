@@ -1,0 +1,51 @@
+<form action="/seller/account/edit-shop" method="POST" class="order-detail" enctype="multipart/form-data">
+    <div class="order-detail__info">
+        <div class="order-detail__info-content">
+            <div class="order-detail__info-title">Thông tin cửa hàng</div>
+            <hr class="divider" />
+            <div class="order-detail__info-container">
+                <div class="order-detail__info-detail">
+                    <table class="order-detail__info-detail-table">
+                        <tr>
+                            <td>Tên cửa hàng</td>
+                            <td>
+                                <input name="shopName" type="text" class="order-detail__input" value="{{user.shopName}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Địa chỉ cửa hàng</td>
+                            <td>
+                                <input name="shopAddress" type="text" class="order-detail__input" value="{{user.shopAddress}}">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="order-detail__info-detail">
+                    <div class="title-image-product">Logo Shop</div>
+                    <div class="add-image-content">
+                        <img src="/{{user.shopAvatar}}" alt="{{user.shopName}}" width="150px" height="150px" id="image-file-upload">
+                        <input name="shopAvatar" type="file" accept=".jpg,.jpeg,.png" id="file-upload" onchange="chooseFile(this)" multiple="multiple">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="order-detail__control">
+        <button class="primary-button order-detail__control-btn">Cập nhật</button>
+    </div>
+</form>
+
+<script>
+    function chooseFile(fileInput) {
+        if(fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+
+            reader.addEventListener('load', function(event) {
+                document.querySelector('#image-file-upload').setAttribute('src', event.target.result);
+            });
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+</script>

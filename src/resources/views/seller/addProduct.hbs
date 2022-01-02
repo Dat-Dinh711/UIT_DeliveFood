@@ -1,0 +1,60 @@
+<div class="add-product">
+    <form class="add-product__content" method="POST" action="/seller/store" enctype="multipart/form-data">
+        <label>Tên sản phẩm<input name="productName" type="text" class="tensanpham" required></label>
+        <div class="add-product__content-2-column">
+            <label>Giá<input name="price" type="text" onChange="format_curency(this);" class="giasanpham" required></label>
+
+            <label>Giá giảm (%)<input name="discount" type="text" class="giamgiasanpham"></label>
+            
+            <label>Số lượng<input name="quantity" type="text" class="soluongsanpham" required></label>
+
+            <label>Danh mục<input name="category" type="text" list="danhmucsanpham" required>
+                <datalist id="danhmucsanpham">
+                    <option value="Trái Cây Tươi">
+                    <option value="Trái Cây Khô">
+                    <option value="Rau Củ">
+                    <option value="Rau Củ Quả Đóng Hộp">
+                    <option value="Rau Củ Quả Đông Lạnh">
+                    <option value="Các Loại Hạt">
+                    <option value="Mì & Nui">
+                    <option value="Bánh Mì">
+                    <option value="Trứng & Sữa">
+                    <option value="Đồ uống">
+                    <option value="Đồ uống có cồn">
+                    <option value="Trà">
+                    <option value="Bánh Kẹo & Snack">
+                    <option value="Thịt Hải Sản Tươi Sống">
+                    <option value="Thịt Hải Sản Đóng Hộp">
+                    <option value="Thịt Hải Sản Đông Lạnh">
+                    <option value="Thịt Nguội">
+                    <option value="Vật Dụng Gia Đình">
+                    <option value="Gia Vị & Dầu Ăn">
+                    <option value="Thực Phẩm Bổ Sung">
+                    <option value="Mẹ & Bé">
+                </datalist>
+            </label>
+            <div class="add-image">
+                <div class="title-image-product">Ảnh sản phẩm</div>
+                <div class="add-image-content">
+                    <img src="" alt="" width="150px" height="150px" id="image-file-upload">
+                    <input name="image" type="file" accept=".jpg,.jpeg,.png" id="file-upload" onchange="chooseFile(this)" multiple="multiple" required>
+                </div>
+            </div>
+        </div>
+        <label>Mô tả sản phẩm<textarea name="desc" rows="3" cols="10" class="motasanpham" required></textarea>
+        <button class="primary-button btn-add-product">Thêm sản phẩm</button>
+    </form>
+</div>
+
+<script>
+    function chooseFile(fileInput) {
+        if(fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+
+            reader.addEventListener('load', function(event) {
+                document.querySelector('#image-file-upload').setAttribute('src', event.target.result);
+            });
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+</script>

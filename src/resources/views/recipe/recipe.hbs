@@ -1,0 +1,19 @@
+<div class="grid">
+    <div class="container-content">
+        <div class="container__title">Bí kíp vào bếp</div>
+        <div class="container__topic">
+            <div class="grid__row">
+                {{#each recipes}}
+                <div class="grid__column-5">
+                    <div class="container__topic-item">
+                        <a href="/recipe/{{this.slug}}" class="container__topic-img-link">
+                            <img src="{{this.thumbnail}}" alt="{{this.name}}" class="container__topic-img">
+                        </a>
+                        <a href="/recipe/{{this.slug}}" class="container__topic-name">{{this.name}}</a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

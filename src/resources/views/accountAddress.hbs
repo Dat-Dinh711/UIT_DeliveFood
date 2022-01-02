@@ -1,0 +1,30 @@
+<div class="account__content">
+    <div class="account__content-warpp">
+        <div class="account__content-title">Địa chỉ</div>
+
+        <div class="account__content-address">
+            {{#if addresses}}
+            {{#each addresses}}
+            <div class="account__content-address-item">
+                <div class="account__content-address-item-content">
+                    <div>{{this.name}}</div>
+                    <div>{{this.phone}}</div>
+                    <div>{{this.address}}</div>
+                </div>
+
+                <div class="account__content-address-item-operation">
+                    <div class="account__content-address-item-operation-delete js-delete-address-btn" data-id="{{this._id}}">Xóa</div>
+                    <a href="/user/account/address/update/{{this._id}}" class="account__content-address-item-operation-edit">Sửa</a>
+                </div>
+            </div>
+            {{/each}}
+            {{else}}
+            <div class="account__content-address-item" style="font-size: 2rem; border-bottom: none">Bạn chưa có địa chỉ nào</div>
+            {{/if}}
+        </div>
+
+        <div class="account__content-control">
+            <div class="btn btn--primary account__content-control-btn js-add-address-btn">Thêm địa chỉ</div>
+        </div>
+    </div>
+</div>

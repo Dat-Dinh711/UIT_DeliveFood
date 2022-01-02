@@ -1,0 +1,95 @@
+<div class="grid">
+    <div class="container-content">
+        <div class="container__post">
+            <div class="container__post-title">{{recipeItem.name}}</div>
+            <div class="container__post-seperate"></div>
+            <div class="container__post-content">
+                <div class="container__content-intro">{{recipeItem.desc}}</div>
+                <div class="container__content-picture">
+                    <img src="{{recipeItem.thumbnail}}" alt="" class="container__content-img">
+                </div>
+                <div class="container__content-material">
+                    <div class="container__content-material-title">NGUYÊN LIỆU</div>
+                    <ul class="container__content-material-list">
+                        {{#materialsView material=recipeItem.material}}{{/materialsView}}
+                    </ul>
+                </div>
+                <div class="container__content-making">
+                    <div class="container__content-material-title">CÁCH LÀM</div>
+                    <ol class="container__content-making-list">
+                        {{#materialsView material=recipeItem.making}}{{/materialsView}}
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="container__comment">
+            <div class="container__comment-title">
+                <span>ĐỂ LẠI BÌNH LUẬN, ĐÁNH GIÁ CHO CÔNG THỨC</span>
+                <div class="line-title"></div>
+            </div>
+            <div class="container__product-reviews-rating__list">
+                <div class="container__product-reviews-rating__list--comment">
+                    <div class="comment-form">
+                        <form action="/recipe/comment/{{recipeItem.slug}}" method="POST">
+                            <div class="review">
+                                <textarea name="comment" class="review-text" cols="30" rows="10" required></textarea>
+                                <button class="primary-button review-btn">Gửi</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- comment -->
+        {{#if comments}}
+        <div class="container__comment">
+            <div class="container__comment-title">
+                <span>BÌNH LUẬN, ĐÁNH GIÁ</span>
+                <div class="line-title"></div>
+            </div>
+            {{#each comments}}
+            <div class="container__product-recipe-comment">
+                <div class="container__product-reviews-rating__list--comment">
+                    <div class="line-block"></div>
+                    <div class="avatar-customer">
+                        <div class="block-avt">
+                            {{#if this.avatar}}
+                            <img src="/{{this.avatar}}" alt="" class="avatar-img">
+                            {{else}}
+                            <div class="avatar-placeholder">
+                                <i class="fas fa-user" style="font-size: 2rem; font-weight: 300; color: #B5B5B5; position: absolute; left: 35%; top:30%"></i>
+                            </div>
+                            {{/if}}
+                        </div>
+                        <div class="block-avt-next">
+                            <div class="username">{{this.userName}}</div>
+                            <div class="date-order">
+                                <span>{{this.date}}</span>
+                            </div>
+                            <div class="content-comment">
+                                <span>{{this.comment}}</span>
+                            </div>
+
+                            <div class="rating-action" style="display: flex;">
+                                <div class="rating-action--like-btn">
+                                    <i class="fas fa-thumbs-up"></i>
+                                </div>
+                                <div class="rating-action--like-count">Hữu ích?</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            <!--page controller-->
+            <div class="container__product-reviews-controller">
+                <ul class="product__pagination">
+                    {{#paginate titleProduct='type' key='comments' page=page totalPage=totalPage}}{{/paginate}}
+                </ul>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</div>

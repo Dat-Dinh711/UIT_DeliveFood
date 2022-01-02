@@ -1,0 +1,34 @@
+<div class="grid">
+    <div class="container-content">
+        <div class="container__description">
+            <div class="grid__row">
+                <div class="container__description-contain">
+                    <div class="container__description-contain-img">
+                        <img src="{{recipe.thumbnail}}" alt="{{recipe.name}}" class="container__description-img">
+                    </div>
+
+                    <div class="container__description-contain-title">
+                        <div class="container__description-title">{{recipe.name}}</div>
+                        <div class="container__description-descrip">{{recipe.desc}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container__post">
+            <div class="grid__row">
+                {{#each recipeItems}}
+                <div class="grid__column-4">
+                    <div class="container__post-item">
+                        <a href="/recipe/item/{{this.slug}}" class="container__post-img-link">
+                            <img src="{{this.thumbnail}}" alt="" class="container__post-img">
+                        </a>
+                        <a href="" class="container__post-name">{{this.name}}</a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+
+    </div>
+</div>

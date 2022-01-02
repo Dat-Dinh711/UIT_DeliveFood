@@ -1,0 +1,131 @@
+<div class="product-list">
+    <div class="product-list__search-and-button">
+        <div class="header-search__btn product-list__search">
+            <input type="text" placeholder="Tìm kiếm sản phẩm ..." class="header-search__btn-input">
+            <i class="fas fa-search header-search__btn-icon"></i>
+        </div>
+        <a href="/seller/add-product">
+            <button class="primary-button product-list__add-btn">Thêm sản phẩm</button>
+        </a>
+    </div>
+
+    <form method="POST" name="multi-choice-actions-form" action="/seller/product-list/handle-form-actions">
+        <div class="deleted-product-count">
+            <a href="/seller/product-list" class="product-deleted">
+            <i class="fas fa-list"></i>
+            Danh sách sản phẩm
+            </a>
+        </div>
+
+        <div class="mt-4 d-flex align-items-center multi-choice-action">
+            <select class="form-select form-select-sm multi-choice-action-select" aria-label="Default select example" name="action" required>
+                <option value="no-action">-- Chọn hành động --</option>
+                <option value="restore">Khôi phục</option>
+                <option value="forceDelete">Xóa vĩnh viễn</option>
+            </select>
+
+            <button class="btn btn--primary disabled multi-choice-actions-btn js-multi-choice-actions-btn">Thực hiện</button>
+        </div>
+
+        <div class="product-list__product">
+            <div class="product-list__product-title">
+                <div class="form-check multi-choice-action-checkbox">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
+                </div>
+                <div>Sản phẩm</div>
+                <div>
+                    Tên sản phẩm
+                    {{{sortable 'productName' _sort}}}
+                </div>
+                <div>
+                    Giá
+                    {{{sortable 'price' _sort}}}
+                </div>
+                <div>
+                    Số lượng
+                    {{{sortable 'quantity' _sort}}}
+                </div>
+                <div>Thao tác</div>
+            </div>
+
+            <div class="product-list__list">
+                {{#each productlists}}
+                <ul class="product-list__item">
+                    <li>
+                        <div class="form-check multi-choice-action-checkbox">
+                            <input class="form-check-input checkbox-item" type="checkbox" name="productIDs[]" value="{{this._id}}">
+                        </div>
+                    </li>
+                    <li><img src="/{{this.image}}" alt="{{this.productName}}"></li>
+                    <li>{{this.productName}}</li>
+                    {{#if this.onSale}}
+                    <li>{{discount this.price this.discount}}</li>
+                    {{else}}
+                    <li>{{discount this.price 0}}</li>
+                    {{/if}}
+                    <li style="width:14%;">{{this.quantity}}</li>
+                    <li>
+                        <div style="margin:0;" class="product-list__item-edit btn-restore" data-id="{{this._id}}">Khôi phục</div> 
+                        <div class="product-list__item-delete js-product-list__item-delete" data-id="{{this._id}}" style="margin:0;">Xóa vĩnh viễn</div>
+                    </li>
+                </ul>
+                {{else}}
+                <ul>
+                    <li class="no-product-list">
+                        Danh sách trống.
+                        <a href="/seller/product-list" class="btn-add-product">Danh sách sản phẩm</a>
+                    </li>
+                </ul>
+                {{/each}}
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal js-modal">
+    <div class="modal__overlay"></div>
+
+    <div class="modal__body js-modal__body">
+        <div class="auth-form js-login-auth-form">
+            <div class="auth-form__container">
+                <div class="auth-form__header">
+                    <h3 class="auth-form__heading">Xóa vĩnh viễn sản phẩm?</h3>
+                </div>
+
+                <div class="auth-form__group" style="margin-bottom: 15px">
+                    <p class="auth-form__input" style="line-height: 2rem">Hành động này không thể khôi phục. Bạn có chắc chắn muốn xóa vĩnh viễn sản phẩm nảy?</p>
+                </div>
+                <div class="auth-form__control" style="margin: 0;">
+                    <button class="btn btn-delete-product">Xóa vĩnh viễn</button>
+                    <button class="btn btn--normal js-back-btn">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- Modal Confirm Delete Multi Products --}}
+<div class="modal js-modal modal-delete-multi-products">
+    <div class="modal__overlay"></div>
+
+    <div class="modal__body js-modal__body modal-delete-multi-products-body">
+        <div class="auth-form js-modal-delete-multi-products-body-form">
+            <div class="auth-form__container">
+                <div class="auth-form__header">
+                    <h3 class="auth-form__heading">Xóa sản phẩm?</h3>
+                </div>
+
+                <div class="auth-form__group" style="margin-bottom: 15px">
+                    <p class="auth-form__input" style="line-height: 2rem">Hành động này không thể khôi phục. Bạn có chắc chắn muốn xóa vĩnh viễn những sản phẩm nảy?</p>
+                </div>
+                <div class="auth-form__control" style="margin: 0">
+                    <button class="btn btn-delete-product js-modal-delete-multi-products-delete-btn">Xóa vĩnh viễn</button>
+                    <button class="btn btn--normal js-modal-delete-multi-products-back-btn">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form method="POST" name="delete-product-form"></form>
+<form method="POST" name="restore-product-form"></form>

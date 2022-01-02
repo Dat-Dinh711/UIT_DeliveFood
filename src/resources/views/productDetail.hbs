@@ -1,0 +1,389 @@
+<div class="grid">
+    <div class="container-content">
+        <div class="container__product">
+            <div class="container__product-img">
+                <div class="screen-img">
+                    <img id="product-image" src="/{{product.image}}" alt="/{{product.productName}}">
+                </div>
+            </div>
+            <div class="container__product-content">
+                <span class="title">{{product.productName}}</span>
+                <div class="below-title">
+                    <div class="rate">
+                        {{#RatingReviewProductDetailView rating=product.rating}}{{/RatingReviewProductDetailView}}
+                    </div>
+                    {{#if product.review}}
+                    <a href="" style="color: #9f9f9f; text-decoration: none;" "> ({{product.review}} đánh giá)</a>
+                    {{else}}
+                    <a href="" style="color: #9f9f9f; text-decoration: none;" "> Chưa có đánh giá</a>
+                    {{/if}}
+                </div>
+                {{#if product.onSale}}
+                <div class="product-price__onsale">
+                    <span>{{discount product.price 0}}</span>
+                    <span>{{discount product.price product.discount}}</span>
+                    <span>Giảm {{product.discount}}%</span>
+                </div>
+                {{else}}
+                <div class="product-price">
+                    <span>{{discount product.price 0}}</span>
+                </div>
+                {{/if}}
+                {{#if product.quantity}}
+                <span class="product-status " style="font-size: 14px; font-weight: bold; ">Còn hàng</span>
+                {{else}}
+                <span class="product-status " style="font-size: 14px; font-weight: bold; color:red">Hết hàng</span>
+                {{/if}}
+                <div class="container__product-details-content description " style="font-size: 1.4rem; color: #707070; margin-top: 15px; ">
+                    <span>{{product.desc}}</span>
+                </div>
+                <div class="line-block "></div>
+                <div class="quantity ">
+                    <span style="font-size: 15px; padding: 10px 0; ">Số lượng</span>
+                    <div class="block-quantity ">
+                        <button class="quantity-btn btn-minus " style="border-radius: 8px 0px 0px 8px; ">
+                            <i class="fas fa-minus "></i>
+                        </button>
+                        <input type="text" min="2" class="quantity-btn quantity-btn-count " role="spinbutton " aria-valuenow="1 " value="1">
+                        <button class="quantity-btn btn-plus " onclick="countProduct() " style="border-radius: 0px 8px 8px 0px; ">
+                            <i class="fas fa-plus "></i>
+                        </button>
+                    </div>
+                </div>
+                <div style="display: flex; ">
+                    <form action="/add-to-cart/{{product._id}}" method="POST">
+                        <input type="text" class="input-add-to-cart" name="qty" style="display: none;">
+                        <button class="secondary-button button__addtocart">Thêm Vào Giỏ Hàng</button>
+                    </form>
+                    <form action="/buy-now/{{product._id}}" method="POST">
+                        <input type="text" class="input-buy-now" name="qty" style="display: none;">
+                        <button class="primary-button button__buynow " style="margin-left: 15px; ">Mua Ngay</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container__shop ">
+            <div class="grid__row ">
+                <div class="container__shop-avatar ">
+                    <a href="/ " style="width: 80px; height: 80px; ">
+                        <div class="block-avt ">
+                            {{#if user.shopAvatar}}
+                            <img src="/{{user.shopAvatar}}" alt=" " class="avatar-img ">
+                            {{else}}
+                            <div class="avatar-placeholder ">
+                                <i class="fas fa-user " style="font-size: 30px; font-weight: 300; color: #B5B5B5; position: absolute; left: 35%; top:30% "></i>
+                            </div>
+                            {{/if}}
+                        </div>
+                    </a>
+                    <div class="block-avt-next " style="margin: 0px 15px; ">
+                        <span style="font-size: 16px; font-weight: 400; color: var(--text-color); ">{{product.shopName}}</span>
+                        <div class=" block-avt-btn ">
+                            <div class="btn-chat ">
+                                <i class="fas fa-comments " style="font-weight: 500; color: #8ABF44; font-size: 2rem; position: absolute; left:8%; top:20% "></i>
+                                <button class="type-item-active btn-chatngay ">Chat Ngay</button>
+                            </div>
+                            <div class="btn-chat">
+                                <i class="fas fa-store " style="color: #707070; font-size: 1.8rem; position: absolute; left:12%; top:20%"></i>
+                                <a href="/shop/{{user.slug}}">
+                                    <button class="type-item btn-chatngay">Xem Shop</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="line-block-horizontal"></div>
+                <div class="shop-info" style="display: flex; margin: 48px;">
+                    <div class="shop-info-1" style="margin-right:56px;">
+                        <div class="lb-danhgia" style="margin-bottom: 10px;">
+                            <label class="danhgia">Đánh giá</label>
+                            <span>440</span>
+                        </div>
+                        <div class="lb-sanpham">
+                            <label class="sanpham">Sản phẩm</label>
+                            <span>{{user.totalProduct}}</span>
+                        </div>
+                    </div>
+                    <div class="shop-info-2">
+                        <div class="lb-follower" style="margin-bottom: 10px;">
+                            <label class="follower">Người theo dõi</label>
+                            <span>440</span>
+                        </div>
+                        <div class="lb-diachi">
+                            <i class="fas fa-map-marker-alt" style="color: #8ABF44; font-size: 1.2rem; padding-right: 4px;"></i>
+                            <label class="diachi">{{user.shopAddress}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{!-- Review --}}
+        <div class="container__product-details">
+            <div class="container__product-reviews-title">
+                <span>ĐỂ LẠI BÌNH LUẬN, ĐÁNH GIÁ CHO SẢN PHẨM</span>
+                <div class="line-title"></div>
+            </div>
+            <form action="/user/review/{{product.slug}}" method="POST">
+                <div class="rating-star">
+                    <ul class="rating-star-list">
+                        <li class="rating" id="rating1" data-index="1">&#9733;</li>
+                        <li class="rating" id="rating2" data-index="2">&#9733;</li>
+                        <li class="rating" id="rating3" data-index="3">&#9733;</li>
+                        <li class="rating" id="rating4" data-index="4">&#9733;</li>
+                        <li class="rating" id="rating5" data-index="5">&#9733;</li>
+                    </ul>
+                    <input type="text" name="rating" class="rating-input" style="display: none" required>
+                </div>
+                <div class="review">
+                    <textarea name="review" class="review-text" cols="30" rows="10"></textarea>
+                    <button class="primary-button review-btn">Gửi</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="container__product-reviews">
+            <div class="container__product-reviews-title">
+                <span>ĐÁNH GIÁ SẢN PHẨM</span>
+                <div class="line-title"></div>
+            </div>
+            <!--filter rating-->
+            <div class="container__product-reviews-rating__filters" style="display: flex;">
+                <a class="rating-link" href="/product-list/{{product.slug}}?rating=all">
+                    <div class="container__product-reviews-rating__filter {{allClicked}}">Tất cả</div>
+                </a>
+                <a class="rating-link" href="?rating=5">
+                    <div class="container__product-reviews-rating__filter {{fiveClicked}}">5 sao</div>
+                </a>
+                <a class="rating-link" href="?rating=4">
+                    <div class="container__product-reviews-rating__filter {{fourClicked}}">4 sao</div>
+                </a>
+                <a class="rating-link" href="?rating=3">
+                    <div class="container__product-reviews-rating__filter {{threeClicked}}">3 sao</div>
+                </a>
+                <a class="rating-link" href="?rating=2">
+                    <div class="container__product-reviews-rating__filter {{twoClicked}}">2 sao</div>
+                </a>
+                <a class="rating-link" href="?rating=1">
+                    <div class="container__product-reviews-rating__filter {{oneClicked}}">1 sao</div>
+                </a>
+            </div>
+            <!--list comments-->
+            {{#if reviews}}
+            {{#each reviews}}
+            <div class="container__product-reviews-rating__list">
+                <div class="container__product-reviews-rating__list--comment">
+                    <div class="line-block"></div>
+                    <div class="avatar-customer">
+                        <div class="block-avt">
+                            {{#if this.avatar}}
+                            <img src="/{{this.avatar}}" alt="{{this.userName}}" class="avatar-img">
+                            {{else}}
+                            <div class="avatar-placeholder">
+                                <i class="far fa-user-circle" style="font-size: 5rem; font-weight: 300; color: #B5B5B5; position: absolute; left: 0%; top:0%"></i>
+                            </div>
+                            {{/if}}
+                        </div>
+                        <div class="block-avt-next">
+                            <div class="username">{{this.userName}}</div>
+                            <div class="rate">
+                                {{#RatingReviewProductDetailView rating=this.rating}}{{/RatingReviewProductDetailView}}
+                            </div>
+                            <div class="date-order">
+                                <span>{{this.date}}</span>
+                            </div>
+                            <div class="content-comment">
+                                <span>{{this.review}}</span>
+                            </div>
+                            {{!-- <div class="comment-media">
+                                <img src="./assets/img/Public Image/review1.png" class="comment-media-img">
+                                <img src="./assets/img/Public Image/review2.png" class="comment-media-img">
+                                <img src="./assets/img/Public Image/review3.png" class="comment-media-img">
+                            </div> --}}
+                            {{!-- <span class="phanloaihang">Phân loại: 300g</span> --}}
+                            <div class="rating-action" style="display: flex;">
+                                <div class="rating-action--like-btn">
+                                    <i class="fas fa-thumbs-up"></i>
+                                </div>
+                                <div class="rating-action--like-count">Hữu ích?</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{else}}
+            <div class="no-review-img">
+                <img src="/img/Cart/No_Review.png" alt="">
+                <span>Chưa có đánh giá</span>
+            </div>
+            {{/if}}
+            
+            <!--page controller-->
+            <div class="container__product-reviews-controller">
+                <ul class="product__pagination">
+                    {{#paginateReview rating=rating page=page totalPage=totalPage}}{{/paginateReview}}
+                </ul>
+            </div>
+        </div>
+        {{!-- <div class="container__product-similar-title">
+            <div class="line-title"></div>
+                <span style="margin: 0px 10px;">SẢN PHẨM TƯƠNG TỰ</span>
+            <div class="line-title"></div>
+        </div>
+        <div class="container__product-similar">
+            <div class="container__featured-products">
+                <div class="grid__row">
+                    <div class="grid__column-5">
+                        <div class="container__products-item">
+                            <div class="container__products-new">
+                                <span>NEW</span>
+                            </div>
+                            <div class="container__products-sale">
+                                <span>ON SALE</span>
+                            </div>
+                            <div class="container__products-cart">
+                                <i class="fas fa-shopping-cart container__products-cart-icon"></i>
+                            </div>
+                            <a href="">
+                                <img src="./assets/img/Products/Bông cải xanh.jpg" alt="" class="container__products-img">
+                            </a>
+                            <div class="container__products-rating">
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <a href="" class="container__products-name">Bông cải xanh</a>
+                            <div class="container__products-price">32.000 VND</div>
+                        </div>
+                    </div>
+                    <div class="grid__column-5">
+                        <div class="container__products-item">
+                            <div class="container__products-new">
+                                <span>NEW</span>
+                            </div>
+                            <div class="container__products-sale">
+                                <span>ON SALE</span>
+                            </div>
+                            <div class="container__products-cart">
+                                <i class="fas fa-shopping-cart container__products-cart-icon"></i>
+                            </div>
+                            <a href="">
+                                <img src="./assets/img/Products/Bông cải xanh.jpg" alt="" class="container__products-img">
+                            </a>
+                            <div class="container__products-rating">
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <a href="" class="container__products-name">Bông cải xanh</a>
+                            <div class="container__products-price">32.000 VND</div>
+                        </div>
+                    </div>
+                    <div class="grid__column-5">
+                        <div class="container__products-item container__products-onsale">
+                            <div class="container__products-new">
+                                <span>NEW</span>
+                            </div>
+                            <div class="container__products-sale">
+                                <span>ON SALE</span>
+                            </div>
+                            <div class="container__products-cart">
+                                <i class="fas fa-shopping-cart container__products-cart-icon"></i>
+                            </div>
+                            <a href="">
+                                <img src="./assets/img/Products/Bông cải xanh.jpg" alt="" class="container__products-img">
+                            </a>
+                            <div class="container__products-rating">
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <a href="" class="container__products-name">Bông cải xanh</a>
+                            <div class="container__products-price">32.000 VND</div>
+                        </div>
+                    </div>
+                    <div class="grid__column-5">
+                        <div class="container__products-item">
+                            <div class="container__products-new">
+                                <span>NEW</span>
+                            </div>
+                            <div class="container__products-sale">
+                                <span>ON SALE</span>
+                            </div>
+                            <div class="container__products-cart">
+                                <i class="fas fa-shopping-cart container__products-cart-icon"></i>
+                            </div>
+                            <a href="">
+                                <img src="./assets/img/Products/Bông cải xanh.jpg" alt="" class="container__products-img">
+                            </a>
+                            <div class="container__products-rating">
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <a href="" class="container__products-name">Bông cải xanh</a>
+                            <div class="container__products-price">32.000 VND</div>
+                        </div>
+                    </div>
+                    <div class="grid__column-5">
+                        <div class="container__products-item container__products-onsale">
+                            <div class="container__products-new">
+                                <span>NEW</span>
+                            </div>
+                            <div class="container__products-sale">
+                                <span>ON SALE</span>
+                            </div>
+                            <div class="container__products-cart">
+                                <i class="fas fa-shopping-cart container__products-cart-icon"></i>
+                            </div>
+                            <a href="">
+                                <img src="./assets/img/Products/Bông cải xanh.jpg" alt="" class="container__products-img">
+                            </a>
+                            <div class="container__products-rating">
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star container__products-star--gold"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <a href="" class="container__products-name">Bông cải xanh</a>
+                            <div class="container__products-price">32.000 VND</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+    </div>
+</div>
+
+<script>
+    // Click đánh giá sao
+    const ratings = document.querySelectorAll('.rating');
+    const input = document.querySelector('.rating-input');
+    
+    ratings.forEach(rating => {
+        var ratingIndex = rating.getAttribute('data-index');
+        rating.addEventListener('click', function() {
+            input.value = ratingIndex;
+
+            if(rating.style.color != 'rgb(255, 204, 0)') {
+                for(var i = 1; i <= ratingIndex; i++) {
+                    document.querySelector(`#rating${i}`).style.color = 'rgb(255, 204, 0)';
+                }
+            } else {
+                for(var i = parseInt(ratingIndex) + 1; i <= 5; i++) {
+                    document.querySelector(`#rating${i}`).style.color = '#ccc';
+                }
+            }
+        });
+    })
+</script>

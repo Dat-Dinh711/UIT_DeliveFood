@@ -1,0 +1,92 @@
+@import '../variables';
+.add-product__content {
+    display: grid;
+    grid-row-gap: 15px;
+    margin: 28px;
+    padding: 45px;
+    border: 1px solid #c4c4c4;
+    border-radius: 8px;
+}
+
+.add-product__content label {
+    color: var(--text-color);
+    font-size: 1.6rem;
+    display: grid;
+    grid-template-columns: 135px auto;
+    align-items: center;
+}
+
+.add-product__content input {
+    border: 1px solid #c4c4c4;
+    height: 32px;
+    border-radius: 4px;
+    padding-left: 5px;
+}
+
+.add-product__content textarea {
+    padding: 5px 5px;
+}
+
+.add-product__content .motasanpham {
+    height: 142px;
+    word-break: break-word;
+    border: 1px solid #c4c4c4;
+    border-radius: 4px;
+}
+
+.add-product__content-2-column {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    justify-content: space-between;
+    grid-row-gap: 15px
+}
+
+.add-image {
+    border: 1px solid #c4c4c4;
+    border-radius: 4px;
+    height: 225px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 5;
+}
+
+.add-image .title-image-product {
+    padding: 8px;
+    font-size: 1.6rem;
+    text-align: center;
+    border-bottom: 1px solid #c4c4c4;
+}
+
+.themdanhmuc {
+    margin-top: 8px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    cursor: pointer;
+}
+
+.add-image-content {
+    display: flex;
+    gap: 15px;
+    margin: 15px;
+}
+
+#file-upload {
+    font-size: 1.3rem;
+    height: auto;
+    width: 100%;
+    border: none;
+}
+
+.add-image-content .nameimg {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    text-decoration-line: underline;
+}
+
+.btn-add-product {
+    width: 150px;
+    margin-top: 30px;
+}

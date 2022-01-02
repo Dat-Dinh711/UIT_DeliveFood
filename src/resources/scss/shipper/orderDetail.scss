@@ -1,0 +1,203 @@
+@import '../variables';
+.navbar__seller {
+    height: 760px;
+}
+
+.header__seller-title {
+    height: 70px;
+}
+
+.order-detail {
+    margin: 20px 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.order-detail__info {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.order-detail__info-content {
+    width: 32%;
+    height: 100%;
+    padding: 15px;
+    border: 1px solid #c4c4c4;
+    border-radius: 10px;
+}
+
+.order-detail__info-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.order-detail__info-contract {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+}
+
+.order-detail__info-content:nth-child(2) .order-detail__info-contract-active {
+    display: block;
+}
+
+.order-detail__info-contract div {
+    margin-bottom: 5px;
+}
+
+.order-detail__info-contract div:first-child {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.order-detail__info-contract-shipping-fee {
+    margin-top: 20px;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.order-detail__info-contract-shipping-fee span:nth-child(2) {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+.order-detail__product {
+    height: 430px;
+    /* height: 63%; */
+    margin: 20px 0;
+    border: 1px solid #c4c4c4;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.order-detail__product-title {
+    height: 15%;
+    display: flex;
+    font-size: 1.6rem;
+    align-items: center;
+    font-weight: 600;
+    padding: 15px 15px;
+    margin: 0 15px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.order-detail__product-title div {
+    width: 20%;
+}
+
+.order-detail__product-title div:nth-child(1) {
+    width: 40%;
+}
+
+.order-detail__product-list {
+    height: 61%;
+    font-size: 1.4rem;
+    overflow-y: auto;
+}
+
+.order-detail__product-list-item {
+    width: 98%;
+    padding: 15px 0;
+    margin: 0 15px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #c4c4c4;
+    cursor: pointer;
+}
+
+.order-detail__product-list-item:hover {
+    background-color: #fefefe;
+}
+
+.order-detail__product-list-item:last-child {
+    border-bottom: 0;
+}
+
+.order-detail__product-list-item li {
+    width: 20%;
+}
+
+.order-detail__product-list-item li:nth-child(1) {
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+
+.order-detail__product-list-item li:nth-child(1) img {
+    margin-right: 15px;
+}
+
+.order-detail__product-list-item li div div {
+    margin-bottom: 5px;
+}
+
+.order-detail__product-list-item-img {
+    width: 60px;
+    height: 60px;
+}
+
+.order-detail__product-price {
+    font-size: 1.6rem;
+    font-weight: 600;
+    height: 24.5%;
+    padding: 15px 0 15px 59%;
+    margin: 0 15px 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: 1px solid #c4c4c4;
+}
+
+.order-detail__product-price div {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.order-detail__product-price div:last-child {
+    margin-bottom: 0;
+}
+
+.navbar__seller {
+    height: 754px;
+}
+
+.order-detail__info-contract div:first-child {
+    margin-bottom: 5px;
+}
+
+.order-detail {
+    height: 89%;
+    margin-top: 18px;
+}
+
+.order-detail__info {
+    height: 22%;
+}
+
+.order-detail__product {
+    margin: 18px 0 5px 0;
+}
+
+.order-detail__control {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.order-detail__control div {
+    width: 13%;
+    margin-left: 20px;
+}
+
+.order-detail__control div button {
+    width: 100%;
+}
