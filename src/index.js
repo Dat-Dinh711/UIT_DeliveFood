@@ -4,7 +4,6 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const paypal = require('paypal-rest-sdk');
-// var acl = require('acl');
 const app = express();
 const port = 3000;
 
@@ -19,7 +18,6 @@ const db = require('./config/db');
 
 // Connect to DB
 db.connect();
-// acl = new acl(new acl.mongodbBackend(db.connect(), 'acl_'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '../public')));

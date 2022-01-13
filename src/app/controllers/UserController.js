@@ -26,59 +26,20 @@ class UserController {
                         allActive: 'order-all__navbar-item-active',
                     })
                 })
-        } else if (req.query.status === 'confirm') {
-            Order.find({ userID: req.session.authUser._id, status: 'confirm' }).sort({ createdAt: -1 })
+        } else {
+            Order.find({ userID: req.session.authUser._id, status: req.query.status }).sort({ createdAt: -1 })
                 .then(orders => {
+                    if (req.query.status) {
+                        var filedActive = req.query.status + 'Active';
+                    } else {
+                        var filedActive = 'allActive';
+                    }
                     res.render('orderAll', {
                         layout: 'mainPurchase',
                         title: 'Đơn mua',
                         orders: multipleMongooseToObject(orders),
                         messageUser: req.flash('messageUser'),
-                        confirmActive: 'order-all__navbar-item-active',
-                    })
-                })
-        } else if (req.query.status === 'shipper') {
-            Order.find({ userID: req.session.authUser._id, status: 'shipper' }).sort({ createdAt: -1 })
-                .then(orders => {
-                    res.render('orderAll', {
-                        layout: 'mainPurchase',
-                        title: 'Đơn mua',
-                        orders: multipleMongooseToObject(orders),
-                        messageUser: req.flash('messageUser'),
-                        shipperActive: 'order-all__navbar-item-active',
-                    })
-                })
-        } else if (req.query.status === 'delivering') {
-            Order.find({ userID: req.session.authUser._id, status: 'delivering' }).sort({ createdAt: -1 })
-                .then(orders => {
-                    res.render('orderAll', {
-                        layout: 'mainPurchase',
-                        title: 'Đơn mua',
-                        orders: multipleMongooseToObject(orders),
-                        messageUser: req.flash('messageUser'),
-                        deliveringActive: 'order-all__navbar-item-active',
-                    })
-                })
-        } else if (req.query.status === 'success') {
-            Order.find({ userID: req.session.authUser._id, status: 'success' }).sort({ createdAt: -1 })
-                .then(orders => {
-                    res.render('orderAll', {
-                        layout: 'mainPurchase',
-                        title: 'Đơn mua',
-                        orders: multipleMongooseToObject(orders),
-                        messageUser: req.flash('messageUser'),
-                        successActive: 'order-all__navbar-item-active',
-                    })
-                })
-        } else if (req.query.status === 'cancel') {
-            Order.find({ userID: req.session.authUser._id, status: 'cancel' }).sort({ createdAt: -1 })
-                .then(orders => {
-                    res.render('orderAll', {
-                        layout: 'mainPurchase',
-                        title: 'Đơn mua',
-                        orders: multipleMongooseToObject(orders),
-                        messageUser: req.flash('messageUser'),
-                        cancelActive: 'order-all__navbar-item-active',
+                        [filedActive]: 'order-all__navbar-item-active',
                     })
                 })
         }

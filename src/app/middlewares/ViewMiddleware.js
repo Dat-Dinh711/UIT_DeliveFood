@@ -289,7 +289,7 @@ module.exports = function(app) {
                     output += `
                         <div style="width: 16%">
                             <form action="/shipper/order-received/cancel/${options.hash.id}" method="POST">
-                                <button class="secondary-button order-detail__control-btn">Giao hàng không thành công</button>
+                                <button class="secondary-button order-detail__control-btn">Hủy đơn hàng</button>
                             </form>
                         </div>
                         <div style="width: 16%">

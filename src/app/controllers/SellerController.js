@@ -5,7 +5,6 @@ const {
     multipleMongooseToObject,
 } = require('../../util/mongoose');
 const User = require('../models/User');
-
 class SellerController {
 
     // [GET] /seller/overview

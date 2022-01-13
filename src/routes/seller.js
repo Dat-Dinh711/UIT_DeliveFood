@@ -3,6 +3,9 @@ const multer = require('multer');
 const router = express.Router();
 
 const sellerController = require('../app/controllers/SellerController');
+
+const sellerVerify = require('../app/middlewares/SellerVerifyMiddleware');
+
 const upload = multer({ dest: './public/uploads/products' });
 const shopAvatar = multer({ dest: './public/uploads/shopAvatars' });
 

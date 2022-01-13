@@ -73,7 +73,7 @@ class ProductController {
                                     product: mongooseToObject(product),
                                     reviews: multipleMongooseToObject(reviews),
                                     user: mongooseToObject(user),
-                                    allClicked: 'container__product-reviews-rating__filter--active',
+                                    allActive: 'container__product-reviews-rating__filter--active',
                                     message: req.flash('message'),
                                     page, //current
                                     totalPage, //pages
@@ -81,18 +81,20 @@ class ProductController {
                                 })
                             })
                     })
-            } else if (req.query.rating === '5') {
+            } else {
                 Promise.all([Product.findOne({ slug: req.params.slug }),
-                        Review.find({ productID: req.params.slug, rating: '5' })
+                        Review.find({ productID: req.params.slug, rating: req.query.rating })
                         .skip(numberSkip)
                         .limit(REVIEW_PAGE_SIZE)
                     ])
                     .then(([product, reviews]) => {
-                        Promise.all([Review.find({ productID: req.params.slug, rating: '5' }).countDocuments(),
+                        Promise.all([Review.find({ productID: req.params.slug, rating: req.query.rating }).countDocuments(),
                                 User.findOne({ shopName: product.shopName })
                             ])
                             .then(([total, user]) => {
                                 var totalPage = Math.ceil(total / REVIEW_PAGE_SIZE);
+
+                                var filedActive = req.query.rating + 'Active';
                                 res.render('productDetail', {
                                     title: 'Sản phẩm',
                                     css: 'productDetail.css',
@@ -100,119 +102,11 @@ class ProductController {
                                     product: mongooseToObject(product),
                                     reviews: multipleMongooseToObject(reviews),
                                     user: mongooseToObject(user),
-                                    fiveClicked: 'container__product-reviews-rating__filter--active',
+                                    [filedActive]: 'container__product-reviews-rating__filter--active',
                                     message: req.flash('message'),
                                     page, //current
                                     totalPage, //pages
-                                    rating: '5',
-                                })
-                            })
-                    })
-            } else if (req.query.rating === '4') {
-                Promise.all([Product.findOne({ slug: req.params.slug }),
-                        Review.find({ productID: req.params.slug, rating: '4' })
-                        .skip(numberSkip)
-                        .limit(REVIEW_PAGE_SIZE)
-                    ])
-                    .then(([product, reviews]) => {
-                        Promise.all([Review.find({ productID: req.params.slug, rating: '4' }).countDocuments(),
-                                User.findOne({ shopName: product.shopName })
-                            ])
-                            .then(([total, user]) => {
-                                var totalPage = Math.ceil(total / REVIEW_PAGE_SIZE);
-                                res.render('productDetail', {
-                                    title: 'Sản phẩm',
-                                    css: 'productDetail.css',
-                                    js: '/js/productDetail.js',
-                                    product: mongooseToObject(product),
-                                    reviews: multipleMongooseToObject(reviews),
-                                    user: mongooseToObject(user),
-                                    fourClicked: 'container__product-reviews-rating__filter--active',
-                                    message: req.flash('message'),
-                                    page, //current
-                                    totalPage, //pages
-                                    rating: '4',
-                                })
-                            })
-                    })
-            } else if (req.query.rating === '3') {
-                Promise.all([Product.findOne({ slug: req.params.slug }),
-                        Review.find({ productID: req.params.slug, rating: '3' })
-                        .skip(numberSkip)
-                        .limit(REVIEW_PAGE_SIZE)
-                    ])
-                    .then(([product, reviews]) => {
-                        Promise.all([Review.find({ productID: req.params.slug, rating: '3' }).countDocuments(),
-                                User.findOne({ shopName: product.shopName })
-                            ])
-                            .then(([total, user]) => {
-                                var totalPage = Math.ceil(total / REVIEW_PAGE_SIZE);
-                                res.render('productDetail', {
-                                    title: 'Sản phẩm',
-                                    css: 'productDetail.css',
-                                    js: '/js/productDetail.js',
-                                    product: mongooseToObject(product),
-                                    reviews: multipleMongooseToObject(reviews),
-                                    user: mongooseToObject(user),
-                                    threeClicked: 'container__product-reviews-rating__filter--active',
-                                    message: req.flash('message'),
-                                    page, //current
-                                    totalPage, //pages
-                                    rating: '3',
-                                })
-                            })
-                    })
-            } else if (req.query.rating === '2') {
-                Promise.all([Product.findOne({ slug: req.params.slug }),
-                        Review.find({ productID: req.params.slug, rating: '2' })
-                        .skip(numberSkip)
-                        .limit(REVIEW_PAGE_SIZE)
-                    ])
-                    .then(([product, reviews]) => {
-                        Promise.all([Review.find({ productID: req.params.slug, rating: '2' }).countDocuments(),
-                                User.findOne({ shopName: product.shopName })
-                            ])
-                            .then(([total, user]) => {
-                                var totalPage = Math.ceil(total / REVIEW_PAGE_SIZE);
-                                res.render('productDetail', {
-                                    title: 'Sản phẩm',
-                                    css: 'productDetail.css',
-                                    js: '/js/productDetail.js',
-                                    product: mongooseToObject(product),
-                                    reviews: multipleMongooseToObject(reviews),
-                                    user: mongooseToObject(user),
-                                    twoClicked: 'container__product-reviews-rating__filter--active',
-                                    message: req.flash('message'),
-                                    page, //current
-                                    totalPage, //pages
-                                    rating: '2',
-                                })
-                            })
-                    })
-            } else if (req.query.rating === '1') {
-                Promise.all([Product.findOne({ slug: req.params.slug }),
-                        Review.find({ productID: req.params.slug, rating: '1' })
-                        .skip(numberSkip)
-                        .limit(REVIEW_PAGE_SIZE)
-                    ])
-                    .then(([product, reviews]) => {
-                        Promise.all([Review.find({ productID: req.params.slug, rating: '1' }).countDocuments(),
-                                User.findOne({ shopName: product.shopName })
-                            ])
-                            .then(([total, user]) => {
-                                var totalPage = Math.ceil(total / REVIEW_PAGE_SIZE);
-                                res.render('productDetail', {
-                                    title: 'Sản phẩm',
-                                    css: 'productDetail.css',
-                                    js: '/js/productDetail.js',
-                                    product: mongooseToObject(product),
-                                    reviews: multipleMongooseToObject(reviews),
-                                    user: mongooseToObject(user),
-                                    oneClicked: 'container__product-reviews-rating__filter--active',
-                                    message: req.flash('message'),
-                                    page, //current
-                                    totalPage, //pages
-                                    rating: '1',
+                                    rating: req.query.rating,
                                 })
                             })
                     })
