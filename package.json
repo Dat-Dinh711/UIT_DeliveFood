@@ -27,7 +27,6 @@
     "dependencies": {
         "acl": "^0.4.11",
         "alert": "^5.0.10",
-        "alert-node": "^5.0.3",
         "bcrypt": "^5.0.1",
         "connect-flash": "^0.1.1",
         "connect-mongodb-session": "^3.1.1",
