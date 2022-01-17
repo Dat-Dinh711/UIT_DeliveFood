@@ -1,21 +1,4 @@
-// Change Address
-const changeBtn = document.querySelector('.js-change-address-btn')
-const backBtn = document.querySelector('.js-btn-back')
-
-const infoDiv = document.querySelector('.js-info-div')
-const changeDiv = document.querySelector('.js-change-address-div');
-
-changeBtn.addEventListener('click', function() {
-    infoDiv.classList.add('close');
-    changeDiv.classList.add('open');
-});
-
-backBtn.addEventListener('click', function() {
-    infoDiv.classList.remove('close');
-    changeDiv.classList.remove('open');
-});
-
-// Select a payment method
+ // Select a payment method
 const paymentDelivery = document.querySelector('.payment-delivery');
 const paymentCart = document.querySelector('.payment-cart');
 const paymentPaypal = document.querySelector('.payment-paypal');
@@ -122,3 +105,20 @@ function stripeResponseHandler(status, response) {
         $form.get(0).submit();
     }
 }
+
+// Change Address
+const changeBtn = document.querySelector('.js-change-address-btn')
+const backBtn = document.querySelector('.js-btn-back')
+
+const infoDiv = document.querySelector('.js-info-div')
+const changeDiv = document.querySelector('.js-change-address-div');
+
+changeBtn.addEventListener('click', function() {
+    infoDiv.classList.add('close');
+    changeDiv.classList.add('open');
+});
+
+backBtn.addEventListener('click', function() {
+    infoDiv.classList.remove('close');
+    changeDiv.classList.remove('open');
+});
