@@ -314,7 +314,12 @@
         </div>
 
         <div class="container__recipe">
-            <span class="container__products-title">Công thức</span>
+            <div class="container__recipe-title">
+                <div class="container__products-title">Công thức</div>
+                <div>
+                    <a href="/recipe" class="container__recipe-all">Xem tất cả <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
 
             <div class="container__recipe-products">
                 {{#each recipes}}
@@ -322,7 +327,7 @@
                     <a href="/recipe/{{this.slug}}" class="container__recipe-item-link">
                         <img src="{{this.thumbnail}}" alt="{{this.name}}" class="container__recipe-img">
                         <div class="container__recipe-info">
-                            <div href="" class="container__recipe-title">{{this.name}}</div>
+                            <div class="container__recipe-name">{{this.name}}</div>
                             <div class="container__recipe-desc">{{this.desc}}</div>
                         </div>
                     </a>
