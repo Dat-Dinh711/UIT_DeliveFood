@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-const morgan = require('morgan');
+// const morgan = require('morgan');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const paypal = require('paypal-rest-sdk');
