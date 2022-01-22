@@ -5,7 +5,7 @@
     "main": "src/index.js",
     "scripts": {
         "dev": "nodemon --inspect src/index.js",
-        "start": "node index.js",
+        "start": "node src/index.js",
         "build-css": "node-sass src/resources/scss/ --output src/public/css/",
         "watch": "nodemon -e scss -x npm run build-css",
         "test": "echo \"Error: no test specified\" && exit 1"
